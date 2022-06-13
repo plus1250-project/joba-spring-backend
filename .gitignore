@@ -1,8 +1,6 @@
 HELP.md
-*.gradle
-*.gradletasknamecache
-gradlew
-gradlew.bat
+.gradle
+.gradletasknamecache
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
