@@ -1,6 +1,6 @@
 HELP.md
-.gradle
-.gradletasknamecache
+*.gradle
+*.gradletasknamecache
 gradlew
 gradlew.bat
 build/
