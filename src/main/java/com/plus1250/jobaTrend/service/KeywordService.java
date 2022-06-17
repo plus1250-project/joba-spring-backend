@@ -4,12 +4,17 @@ import com.plus1250.jobaTrend.model.dto.IncreaseKeywordDTO;
 import com.plus1250.jobaTrend.model.dto.KeywordMonthListDTO;
 import com.plus1250.jobaTrend.model.dto.MainKeywordDTO;
 import com.plus1250.jobaTrend.model.dto.MonthlyKeywordDTO;
+import com.plus1250.jobaTrend.repository.KeywordRepository;
 
 public interface KeywordService {
 
     // 언급량 분석
-    static MainKeywordDTO selectMainKeyword(String industryDTO) {
+//    static MainKeywordDTO selectMainKeyword(String industryDTO) {
+//
+//       return null;
+//   }
 
+    static MainKeywordDTO selectMainKeyword(String industryDTO) {
         return null;
     }
 
