@@ -8,6 +8,8 @@ import com.plus1250.jobaTrend.repository.KeywordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class KeywordServiceImpl implements KeywordService {
 
@@ -15,33 +17,37 @@ public class KeywordServiceImpl implements KeywordService {
     private KeywordRepository keywordRepository;
 
     // 언급량 분석
-    public MainKeywordDTO selectMainKeyword(String industryName) {
-        MainKeywordDTO mainKeywordDTO = new MainKeywordDTO();
+    public List<MainKeywordDTO> selectMainKeyword(String industryName) {
+        List<MainKeywordDTO> mainKeywordDTO  = keywordRepository.findByMainKeyword(industryName);
 
-        mainKeywordDTO= keywordRepository.findByMainKeyword(industryName);
-        return mainKeywordDTO;
+        return KeywordService.selectMainKeyword(industryName);
     }
 
     // 월별 트렌드 분석
-    public MonthlyKeywordDTO selectMonthlyKeyword(String industryName) {
-        MonthlyKeywordDTO monthlyKeywordDTO = new MonthlyKeywordDTO();
+    public List<MonthlyKeywordDTO> selectMonthlyKeyword(String industryName) {
+        List<MonthlyKeywordDTO> monthlyKeywordDTO = keywordRepository.findByMonthlyKeyword(industryName);
 
-        // keywordRepository.findByMonthlyKeyword(industryName);
-        return monthlyKeywordDTO;
+        return KeywordService.selectMonthlyKeyword(industryName);
+
     }
+//    public MonthlyKeywordDTO selectMonthlyKeyword(String industryName) {
+//        MonthlyKeywordDTO monthlyKeywordDTO = new MonthlyKeywordDTO();
+//
+//        monthlyKeywordDTO = keywordRepository.findByMonthlyKeyword(industryName);
+//        return monthlyKeywordDTO;
+//    }
 
     // 과거 월별 조회
-    public KeywordMonthListDTO selectKeywordMonthInfo(String industryName) {
-        KeywordMonthListDTO keywordMonthListDTO = new KeywordMonthListDTO();
+    public List<KeywordMonthListDTO> selectKeywordMonthInfo(String industryName) {
+        List<KeywordMonthListDTO> keywordMonthListDTO = keywordRepository.findByKeywordMonthList(industryName);
 
-        // keywordRepository.findByKeywordMonthList(industryName);
-        return keywordMonthListDTO;
+        return KeywordService.selectKeywordMonthInfo(industryName);
     }
 
     // 상승 키워드
-    public IncreaseKeywordDTO selectIncreaseKeyword(String industryName) {
+    public List<IncreaseKeywordDTO> selectIncreaseKeyword(String industryName) {
+        List<IncreaseKeywordDTO> increaseKeywordDTO = keywordRepository.findByIncreaseKeyword(industryName);
 
-        // keywordRepository.findByIncreaseKeyword(industryName);
         return KeywordService.selectIncreaseKeyword(industryName);
     }
 }

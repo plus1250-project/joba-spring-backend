@@ -4,36 +4,39 @@ import com.plus1250.jobaTrend.model.dto.IncreaseKeywordDTO;
 import com.plus1250.jobaTrend.model.dto.KeywordMonthListDTO;
 import com.plus1250.jobaTrend.model.dto.MainKeywordDTO;
 import com.plus1250.jobaTrend.model.dto.MonthlyKeywordDTO;
-import com.plus1250.jobaTrend.repository.KeywordRepository;
+
+import java.util.List;
 
 public interface KeywordService {
 
     // 언급량 분석
-//    static MainKeywordDTO selectMainKeyword(String industryDTO) {
+//    static MainKeywordDTO selectMainKeyword(String industryName) {
 //
 //       return null;
 //   }
 
-    static MainKeywordDTO selectMainKeyword(String industryDTO) {
-        return null;
+    static List<MainKeywordDTO> selectMainKeyword(String industryName) {
+
+        return selectMainKeyword(industryName);
     }
 
     // 월별 트렌드 분석
-    static MonthlyKeywordDTO selectMonthlyKeyword(String industryDTO) {
+    static List<MonthlyKeywordDTO> selectMonthlyKeyword(String industryName) {
 
-        return null;
+        return selectMonthlyKeyword(industryName);
     }
 
     // 과거 월별 조회
-    static KeywordMonthListDTO selectKeywordMonthInfo(String industryName) {
+    static List<KeywordMonthListDTO> selectKeywordMonthInfo(String industryName) {
 
-        return null;
+        return selectKeywordMonthInfo(industryName);
     }
 
     // 상승 키워드
-    static IncreaseKeywordDTO selectIncreaseKeyword(String industryName) {
+    static List<IncreaseKeywordDTO> selectIncreaseKeyword(String industryName) {
 
-        return null;
+        return selectIncreaseKeyword(industryName);
     }
+
 }
 

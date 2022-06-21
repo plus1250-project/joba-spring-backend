@@ -1,8 +1,6 @@
 package com.plus1250.jobaTrend.model.dto;
 
-import com.plus1250.jobaTrend.model.entity.MainKeyword;
-
-public class MainKeywordDTO {
+public class MainKeywordDTO<S> {
     private String keyword;
     private String dailyDate;
     private String industryName;
