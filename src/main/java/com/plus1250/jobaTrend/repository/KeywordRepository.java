@@ -6,11 +6,15 @@ import com.plus1250.jobaTrend.model.dto.MainKeywordDTO;
 import com.plus1250.jobaTrend.model.dto.MonthlyKeywordDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface KeywordRepository extends JpaRepository {
 
-    MainKeywordDTO findByMainKeyword(String industryName);
-    MonthlyKeywordDTO findByMonthlykeyword(String industryName);
-    KeywordMonthListDTO findByKeywordMonthList(String industryName);
-    IncreaseKeywordDTO findByIncreaseKeyword(String industryName);
+    List<MainKeywordDTO> findByMainKeyword(String industryName);
+    List<MonthlyKeywordDTO> findByMonthlyKeyword(String industryName);
+    List<KeywordMonthListDTO> findByKeywordMonthList(String industryName);
+    List<IncreaseKeywordDTO> findByIncreaseKeyword(String industryName);
+
+    //IncreaseKeywordDTO findByIncreaseKeyword(String industryName);
 
 }
