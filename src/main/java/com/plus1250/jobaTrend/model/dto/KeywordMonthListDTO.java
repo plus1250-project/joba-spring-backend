@@ -1,7 +1,7 @@
 package com.plus1250.jobaTrend.model.dto;
 
-import java.util.List;
-import java.util.stream.Collector;
+import com.plus1250.jobaTrend.model.entity.KeywordMonthList;
+import com.plus1250.jobaTrend.model.entity.MonthlyKeyword;
 
 public class KeywordMonthListDTO {
     private String keyword;
@@ -20,7 +20,7 @@ public class KeywordMonthListDTO {
 
     public KeywordMonthListDTO() {}
 
-    public KeywordMonthListDTO(KeywordMonthListDTO r) {
+    public KeywordMonthListDTO(KeywordMonthList r) {
         this.keyword = r.getKeyword();
         this.month = r.getMonth();
         this.moCnt = r.getMoCnt();

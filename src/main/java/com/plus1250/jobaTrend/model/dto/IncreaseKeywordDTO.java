@@ -1,5 +1,7 @@
 package com.plus1250.jobaTrend.model.dto;
 
+import com.plus1250.jobaTrend.model.entity.IncreaseKeyword;
+
 public class IncreaseKeywordDTO {
     private String keyword;
     private String industryName;
@@ -12,6 +14,12 @@ public class IncreaseKeywordDTO {
     }
 
     public IncreaseKeywordDTO() {}
+
+    public IncreaseKeywordDTO(IncreaseKeyword r) {
+        this.keyword = r.getKeyword();
+        this.industryName = r.getIndustryName();
+        this.increaseValue = r.getIncreaseValue();
+    }
 
     public String getKeyword() {
         return keyword;

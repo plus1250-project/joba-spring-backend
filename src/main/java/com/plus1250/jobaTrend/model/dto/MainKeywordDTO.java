@@ -2,7 +2,7 @@ package com.plus1250.jobaTrend.model.dto;
 
 import com.plus1250.jobaTrend.model.entity.MainKeyword;
 
-public class MainKeywordDTO<S> {
+public class MainKeywordDTO {
     private String keyword;
     private String dailyDate;
     private String industryName;
@@ -17,9 +17,15 @@ public class MainKeywordDTO<S> {
         this.keyCnt = keyCnt;
     }
 
+    public MainKeywordDTO(MainKeyword r) {
+        this.keyword = r.getKeyword();
+        this.dailyDate = r.getDailyDate();
+        this.industryName = r.getIndustryName();
+        this.corpName = r.getCorpName();
+        this.keyCnt = r.getKeyCnt();
+    }
+
     public MainKeywordDTO() {}
-
-
 
     public String getKeyword() {
         return keyword;
