@@ -6,8 +6,8 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
+@Entity
 @Table(name="Article_list")
 public class ArticleList {
 

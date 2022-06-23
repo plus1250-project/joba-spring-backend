@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
-@RequiredArgsConstructor
 @RequestMapping("/")
+@RequiredArgsConstructor
 @RestController
 public class ArticleListController {
 
