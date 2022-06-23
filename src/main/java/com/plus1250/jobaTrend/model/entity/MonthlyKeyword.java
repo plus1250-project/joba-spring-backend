@@ -1,11 +1,14 @@
 package com.plus1250.jobaTrend.model.entity;
 
+import lombok.Getter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+@Getter
 @Table(name="monthly_keyword")
 public class MonthlyKeyword {
 
@@ -21,4 +24,6 @@ public class MonthlyKeyword {
 
     @Column(name="key_cnt")
     private double keyCnt;
+
+
 }

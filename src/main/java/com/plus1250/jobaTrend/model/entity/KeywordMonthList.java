@@ -1,6 +1,7 @@
 package com.plus1250.jobaTrend.model.entity;
 
 import lombok.Builder;
+
 import lombok.Getter;
 
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Table;
 
 @Getter
 @Entity
+@Getter
 @Table(name="keyword_month_list")
 public class KeywordMonthList {
 
@@ -20,6 +22,9 @@ public class KeywordMonthList {
     @Id
     @Column(name="month_name")
     private String month;
+
+    @Column(name="month_cnt")
+    private  double moCnt;
 
     @Column(name="industry_name")
     private String industryName;

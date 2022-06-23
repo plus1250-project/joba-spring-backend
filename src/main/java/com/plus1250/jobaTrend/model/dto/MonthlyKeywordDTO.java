@@ -1,5 +1,7 @@
 package com.plus1250.jobaTrend.model.dto;
 
+import com.plus1250.jobaTrend.model.entity.MonthlyKeyword;
+
 public class MonthlyKeywordDTO {
     private String keyword;
     private String monthlyDate;
@@ -14,6 +16,13 @@ public class MonthlyKeywordDTO {
     }
 
     public MonthlyKeywordDTO() {}
+
+    public MonthlyKeywordDTO(MonthlyKeyword r) {
+        this.keyword = r.getKeyword();
+        this.monthlyDate = r.getMonthlyDate();
+        this.industryName = r.getIndustryName();
+        this.keyCnt = r.getKeyCnt();
+    }
 
     public String getKeyword() {
         return keyword;
