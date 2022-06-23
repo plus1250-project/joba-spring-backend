@@ -1,12 +1,11 @@
 package com.plus1250.jobaTrend.service;
 
-import com.plus1250.jobaTrend.model.dto.IncreaseKeywordDTO;
-import com.plus1250.jobaTrend.model.dto.KeywordMonthListDTO;
-import com.plus1250.jobaTrend.model.dto.MainKeywordDTO;
-import com.plus1250.jobaTrend.model.dto.MonthlyKeywordDTO;
-import com.plus1250.jobaTrend.model.entity.KeywordMonthList;
+import com.plus1250.jobaTrend.model.dto.*;
 import com.plus1250.jobaTrend.model.entity.MainKeyword;
-import com.plus1250.jobaTrend.repository.KeywordRepository;
+import com.plus1250.jobaTrend.repository.IncreaseKeywordRepository;
+import com.plus1250.jobaTrend.repository.KeywordMonthListRepository;
+import com.plus1250.jobaTrend.repository.MainKeywordRepository;
+import com.plus1250.jobaTrend.repository.MonthlyKeywordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,22 +16,38 @@ import java.util.stream.Collectors;
 public class KeywordServiceImpl implements KeywordService {
 
     @Autowired
-    private KeywordRepository keywordRepository;
+    private MainKeywordRepository keywordRepository;
+
+    @Autowired
+    private KeywordMonthListRepository keywordMonthListRepository;
+
+    @Autowired
+    private MonthlyKeywordRepository monthlyKeywordRepository;
+
+    @Autowired
+    private IncreaseKeywordRepository increaseKeywordRepository;
 
     // 언급량 분석
     @Override
     public List<MainKeywordDTO> selectMainKeyword(String industryName) {
-        List<MainKeywordDTO> mainKeywordDTO  = keywordRepository.findByMainKeyword(industryName);
 
+        // 받은 파라미터 값 확인
         System.out.println("" + industryName);
 
-        return mainKeywordDTO;
+        // DB
+        List<MainKeyword> mainKeyword = keywordRepository.findByMainKeyword(industryName);
+
+        //
+        List<MainKeywordDTO> result = mainKeyword.stream().map(r -> new MainKeywordDTO(r)).collect(Collectors.toList());
+        System.out.println(result);
+
+        return result;
     }
 
     // 월별 트렌드 분석
     @Override
     public List<MonthlyKeywordDTO> selectMonthlyKeyword(String industryName) {
-        List<MonthlyKeywordDTO> monthlyKeywordDTO = keywordRepository.findByMonthlyKeyword(industryName);
+        List<MonthlyKeywordDTO> monthlyKeywordDTO = monthlyKeywordRepository.findByMonthlyKeyword(industryName);
 
         //monthlyKeywordDTO monthlyKeyword;
         //if (monthlyKeywordDTO == null || !monthlyKeyword.getKeyword())
@@ -52,7 +67,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 과거 월별 조회
     @Override
     public List<KeywordMonthListDTO> selectKeywordMonthInfo(String industryName) {
-        List<KeywordMonthListDTO> keywordMonthListDTO = keywordRepository.findByKeywordMonthList(industryName);
+        List<KeywordMonthListDTO> keywordMonthListDTO = keywordMonthListRepository.findByKeywordMonthList(industryName);
 
         System.out.println("" + industryName);
 
@@ -64,7 +79,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 상승 키워드
     @Override
     public List<IncreaseKeywordDTO> selectIncreaseKeyword(String industryName) {
-        List<IncreaseKeywordDTO> increaseKeywordDTO = keywordRepository.findByIncreaseKeyword(industryName);
+        List<IncreaseKeywordDTO> increaseKeywordDTO = increaseKeywordRepository.findByIncreaseKeyword(industryName);
 
         System.out.println("" + industryName);
 
