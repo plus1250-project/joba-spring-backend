@@ -11,7 +11,7 @@ import java.util.List;
 // 언급량 분석 / 월별트렌드 키워드 / 과거 월별 조회 / 상승 키워드
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping("/")
+@RequestMapping()
 public class KeywordController {
 
     private final KeywordService keywordService;
@@ -21,41 +21,31 @@ public class KeywordController {
     }
 
     // 언급량 분석
-    @PostMapping("/main_keyword/{keyword}{daily_date}")
-    public List<MainKeywordDTO> selectMainKeyword(@RequestBody String industryName) {
+    @GetMapping("/main_keyword/{keyword}")
+    public List<MainKeywordDTO> selectMainKeyword(@RequestParam(value = "keyword") String industryName) {
         System.out.println("selectMainKeyword called!");
-        return KeywordService.selectMainKeyword(industryName);
+        return keywordService.selectMainKeyword(industryName);
     }
 
-//    public MainKeywordDTO selectMainKeyword(@RequestBody String industryName) {
-//        try {
-//            MainKeywordDTO mainKeywordDTO = KeywordService.selectMainKeyword(industryName);
-//            return KeywordService.selectMainKeyword(industryName);
-//        } catch (Exception e) {
-//            System.out.println(e.getMessage());
-//            return null;
-//        }
-//    }
-
     // 월별 트렌드 분석
-    @PostMapping("/monthly_keyword/{keyword}")
-    public List<MonthlyKeywordDTO> selectMonthlyKeyword(@RequestBody String industryName) {
+    @GetMapping("/monthly_keyword/{keyword}")
+    public List<MonthlyKeywordDTO> selectMonthlyKeyword(@RequestParam(value = "keyword") String industryName) {
         System.out.println("selectMonthlyKeyword called!");
-        return KeywordService.selectMonthlyKeyword(industryName);
+        return keywordService.selectMonthlyKeyword(industryName);
     }
 
     // 과거 월별 조회
-    @PostMapping("/keyword_month_list/{keyword}{month}")
-    public List<KeywordMonthListDTO> selectKeywordMonthInfo(@RequestBody String industryName) {
+    @GetMapping("/keyword_month_list/{keyword}{month}")
+    public List<KeywordMonthListDTO> selectKeywordMonthInfo(@RequestParam(value = "{keyword}{month}") String industryName) {
         System.out.println("selectKeywordMonthInfo called!");
-        return KeywordService.selectKeywordMonthInfo(industryName);
+        return keywordService.selectKeywordMonthInfo(industryName);
     }
 
     // 상승 키워드
-    @PostMapping("/increase_keyword/{keyword]")
-    public List<IncreaseKeywordDTO> selectIncreaseKeyword(@RequestBody String industryName) {
+    @GetMapping("/increase_keyword/{keyword]")
+    public List<IncreaseKeywordDTO> selectIncreaseKeyword(@RequestParam(value = "keyword") String industryName) {
         System.out.println("selectIncreaseKeyword called!");
-        return KeywordService.selectIncreaseKeyword(industryName);
+        return keywordService.selectIncreaseKeyword(industryName);
     }
 }
 
