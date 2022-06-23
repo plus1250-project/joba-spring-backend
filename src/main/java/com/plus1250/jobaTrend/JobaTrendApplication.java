@@ -8,4 +8,5 @@ public class JobaTrendApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JobaTrendApplication.class, args);
 	}
+
 }

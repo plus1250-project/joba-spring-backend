@@ -1,5 +1,8 @@
 package com.plus1250.jobaTrend.model.dto;
 
+import java.util.List;
+import java.util.stream.Collector;
+
 public class KeywordMonthListDTO {
     private String keyword;
     private String month;
@@ -17,6 +20,13 @@ public class KeywordMonthListDTO {
 
     public KeywordMonthListDTO() {}
 
+    public KeywordMonthListDTO(KeywordMonthListDTO r) {
+        this.keyword = r.getKeyword();
+        this.month = r.getMonth();
+        this.moCnt = r.getMoCnt();
+        this.industryName = r.getIndustryName();
+        this.keyCnt = r.getKeyCnt();
+    }
 
     public String getKeyword() {
         return keyword;
@@ -57,4 +67,7 @@ public class KeywordMonthListDTO {
     public void setKeyCnt(double keyCnt) {
         this.keyCnt = keyCnt;
     }
+
+
+
 }

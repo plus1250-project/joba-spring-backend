@@ -14,7 +14,4 @@ public interface KeywordRepository extends JpaRepository {
     List<MonthlyKeywordDTO> findByMonthlyKeyword(String industryName);
     List<KeywordMonthListDTO> findByKeywordMonthList(String industryName);
     List<IncreaseKeywordDTO> findByIncreaseKeyword(String industryName);
-
-    //IncreaseKeywordDTO findByIncreaseKeyword(String industryName);
-
 }

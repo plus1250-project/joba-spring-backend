@@ -1,5 +1,7 @@
 package com.plus1250.jobaTrend.model.dto;
 
+import com.plus1250.jobaTrend.model.entity.MainKeyword;
+
 public class MainKeywordDTO<S> {
     private String keyword;
     private String dailyDate;
@@ -16,6 +18,8 @@ public class MainKeywordDTO<S> {
     }
 
     public MainKeywordDTO() {}
+
+
 
     public String getKeyword() {
         return keyword;
