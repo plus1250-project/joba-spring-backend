@@ -1,10 +1,12 @@
 package com.plus1250.jobaTrend.service;
 
 import com.plus1250.jobaTrend.model.dto.*;
+
 import com.plus1250.jobaTrend.model.entity.IncreaseKeyword;
 import com.plus1250.jobaTrend.model.entity.KeywordMonthList;
 import com.plus1250.jobaTrend.model.entity.MainKeyword;
 import com.plus1250.jobaTrend.model.entity.MonthlyKeyword;
+import com.plus1250.jobaTrend.model.entity.MainKeyword;
 import com.plus1250.jobaTrend.repository.IncreaseKeywordRepository;
 import com.plus1250.jobaTrend.repository.KeywordMonthListRepository;
 import com.plus1250.jobaTrend.repository.MainKeywordRepository;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 public class KeywordServiceImpl implements KeywordService {
 
     @Autowired
+
     private MainKeywordRepository mainKeywordRepository;
 
     @Autowired
@@ -39,8 +42,10 @@ public class KeywordServiceImpl implements KeywordService {
         System.out.println("" + industryName);
 
         // DB
+
         List<MainKeyword> mainKeyword = mainKeywordRepository.findByMainKeyword(industryName);
 
+        //
         List<MainKeywordDTO> result = mainKeyword.stream().map(r -> new MainKeywordDTO(r)).collect(Collectors.toList());
         System.out.println(result);
 
