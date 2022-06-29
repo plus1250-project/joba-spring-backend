@@ -27,6 +27,10 @@ public class MainKeywordDTO {
 
     public MainKeywordDTO() {}
 
+    public MainKeywordDTO(String industryName) {
+        this.industryName = industryName;
+    }
+
     public String getKeyword() {
         return keyword;
     }

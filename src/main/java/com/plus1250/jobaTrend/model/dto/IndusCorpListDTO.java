@@ -15,6 +15,10 @@ public class IndusCorpListDTO {
 
     public IndusCorpListDTO() {}
 
+    public IndusCorpListDTO(String industryName) {
+        this.industryName = industryName;
+    }
+
     public IndusCorpListDTO(IndusCorpList r) {
         this.industryName = r.getIndustryName();
         this.informalName = r.getInformalName();

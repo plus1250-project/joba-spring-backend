@@ -5,5 +5,5 @@ import com.plus1250.jobaTrend.model.dto.IndusCorpListDTO;
 import java.util.List;
 
 public interface IndusCorpListService {
-    List<IndusCorpListDTO> selectIndustry(String industryName);
+    List<IndusCorpListDTO> selectIndustry(IndusCorpListDTO industryName);
 }

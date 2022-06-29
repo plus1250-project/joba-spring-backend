@@ -11,15 +11,15 @@ import java.util.List;
 public interface KeywordService {
 
     // 언급량 분석
-    List<MainKeywordDTO> selectMainKeyword(String industryName);
+    List<MainKeywordDTO> selectMainKeyword(MainKeywordDTO industryName);
 
     // 월별 트렌드 분석
-    List<MonthlyKeywordDTO> selectMonthlyKeyword(String industryName);
+    List<MonthlyKeywordDTO> selectMonthlyKeyword(MonthlyKeywordDTO industryName);
 
     // 과거 월별 조회
-    List<KeywordMonthListDTO> selectKeywordMonthInfo(String industryName);
+    List<KeywordMonthListDTO> selectKeywordMonthInfo(KeywordMonthListDTO industryName);
 
     // 상승 키워드
-    List<IncreaseKeywordDTO> selectIncreaseKeyword(String industryName);
+    List<IncreaseKeywordDTO> selectIncreaseKeyword(IncreaseKeywordDTO industryName);
 }
 

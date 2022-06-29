@@ -17,6 +17,10 @@ public class MonthlyKeywordDTO {
 
     public MonthlyKeywordDTO() {}
 
+    public MonthlyKeywordDTO(String industryName) {
+        this.industryName = industryName;
+    }
+
     public MonthlyKeywordDTO(MonthlyKeyword r) {
         this.keyword = r.getKeyword();
         this.monthlyDate = r.getMonthlyDate();

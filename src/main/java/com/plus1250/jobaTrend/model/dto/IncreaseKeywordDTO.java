@@ -15,6 +15,10 @@ public class IncreaseKeywordDTO {
 
     public IncreaseKeywordDTO() {}
 
+    public IncreaseKeywordDTO(String industryName) {
+        this.industryName = industryName;
+    }
+
     public IncreaseKeywordDTO(IncreaseKeyword r) {
         this.keyword = r.getKeyword();
         this.industryName = r.getIndustryName();

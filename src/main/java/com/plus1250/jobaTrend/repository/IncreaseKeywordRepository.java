@@ -14,6 +14,3 @@ public interface IncreaseKeywordRepository extends JpaRepository<IncreaseKeyword
     List<IncreaseKeyword> findByIncreaseKeyword(String industryName);
 }
 
-    List<IncreaseKeywordDTO> findByIncreaseKeyword(String industryName);
-}
-

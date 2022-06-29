@@ -19,6 +19,10 @@ public class KeywordMonthListDTO {
 
     public KeywordMonthListDTO() {}
 
+    public KeywordMonthListDTO(String industryName) {
+        this.industryName = industryName;
+    }
+
     public KeywordMonthListDTO(KeywordMonthList r) {
         this.keyword = r.getKeyword();
         this.month = r.getMonth();
