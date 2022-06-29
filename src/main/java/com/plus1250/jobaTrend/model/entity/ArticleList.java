@@ -38,6 +38,4 @@ public class ArticleList {
         this.industryName = industryName;
         this.articleTitle = title;
     }
-
-
 }
