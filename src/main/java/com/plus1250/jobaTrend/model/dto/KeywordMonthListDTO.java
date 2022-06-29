@@ -1,7 +1,6 @@
 package com.plus1250.jobaTrend.model.dto;
 
 import com.plus1250.jobaTrend.model.entity.KeywordMonthList;
-import com.plus1250.jobaTrend.model.entity.MonthlyKeyword;
 
 public class KeywordMonthListDTO {
     private String keyword;
