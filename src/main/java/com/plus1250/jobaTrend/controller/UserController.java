@@ -24,24 +24,25 @@ public class UserController {
     }
 
     // 회원가입
-//    @PostMapping("/signup")
-//    public void insertUser(@RequestBody UserDTO userDTO) {
-//        System.out.println(userDTO);
-//        return userService.insertUser(userDTO);
-//    }
+    @PostMapping("/user")
+    public void insertUser(@RequestBody UserDTO userDTO) {
+        System.out.println(userDTO);
+        userService.save(userDTO);
+        return "redirect:/login";
+    }
 
 
 
     // 회원 정보 수정
     @PostMapping("/update")
     public void updateUser(@RequestBody UserDTO userDTO) {
-        userService.updateUser(userDTO);
+        return userService.updateUser(userDTO);
     }
 
     // 회원탈퇴
     @PostMapping("/delete")
     public void deleteUser(@RequestBody UserDTO userDTO) {
-        userService.deleteUser(userDTO);
+        return userService.deleteUser(userDTO);
     }
 
     // 로그인

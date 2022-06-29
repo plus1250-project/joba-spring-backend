@@ -1,34 +1,34 @@
 package com.plus1250.jobaTrend.model.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="user")
 public class User {
 
     @Id
-    @Column(name="user_email")
-    private String userEmail;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name="user_pw")
-    private String userPw;
+    @Column(nullable = false)
+    private String email;
 
-    public String getUserEmail() {
-        return userEmail;
+    @Column(nullable = false)
+    private String pw;
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUserPw() {
-        return userPw;
+    public String getPw() {
+        return pw;
     }
 
-    public void setUserPw(String userPw) {
-        this.userPw = userPw;
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 }

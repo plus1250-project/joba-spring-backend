@@ -5,7 +5,7 @@ import com.plus1250.jobaTrend.model.dto.UserDTO;
 public interface UserService {
 
     // 회원가입
-    void insertUser(UserDTO userDTO);
+    void insertUser(UserDTO email, UserDTO pw);
 
     // 회원 정보 수정
     void updateUser(UserDTO userDTO);
@@ -15,4 +15,7 @@ public interface UserService {
 
     // 로그인
     Boolean loginUser(UserDTO userDTO);
+
+    // 회원가입
+    void insertUser(String email, String pw);
 }

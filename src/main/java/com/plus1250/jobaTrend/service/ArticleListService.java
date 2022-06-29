@@ -6,6 +6,4 @@ import java.util.List;
 
 public interface ArticleListService {
     List<ArticleListDTO> selectArticleInfo(ArticleListDTO industryName);
-
-    // List<ArticleListDTO> selectArticleInfo(ArticleListDTO articleListDTO);
 }
