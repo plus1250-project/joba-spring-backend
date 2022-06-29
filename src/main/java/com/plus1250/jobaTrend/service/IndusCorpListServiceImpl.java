@@ -17,7 +17,7 @@ public class IndusCorpListServiceImpl implements IndusCorpListService {
     
     @Override
     public List<IndusCorpListDTO> selectIndustry(String industryName) {
-        System.out.println("" + industryName);
+        System.out.println("serviceImpl :" + industryName);
 
         // DB
         List<IndusCorpList> indusCorpList = indusCorpListRepository.findByIndusCorpInfo(industryName);

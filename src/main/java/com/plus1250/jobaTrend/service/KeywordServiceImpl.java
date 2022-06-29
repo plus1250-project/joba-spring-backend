@@ -36,7 +36,7 @@ public class KeywordServiceImpl implements KeywordService {
     public List<MainKeywordDTO> selectMainKeyword(String industryName) {
 
         // 받은 파라미터 값 확인
-        System.out.println("" + industryName);
+        System.out.println("serviceImpl :" + industryName);
 
         // DB
         List<MainKeyword> mainKeyword = mainKeywordRepository.findByMainKeyword(industryName);
@@ -50,7 +50,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 월별 트렌드 분석
     @Override
     public List<MonthlyKeywordDTO> selectMonthlyKeyword(String industryName) {
-        System.out.println("" + industryName);
+        System.out.println("serviceImpl :" + industryName);
 
         List<MonthlyKeyword> monthlyKeyword = monthlyKeywordRepository.findByMonthlyKeyword(industryName);
 
@@ -63,7 +63,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 과거 월별 조회
     @Override
     public List<KeywordMonthListDTO> selectKeywordMonthInfo(String industryName) {
-        System.out.println("" + industryName);
+        System.out.println("serviceImpl :" + industryName);
 
         List<KeywordMonthList> keywordMonthList = keywordMonthListRepository.findByKeywordMonthList(industryName);
 
@@ -76,7 +76,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 상승 키워드
     @Override
     public List<IncreaseKeywordDTO> selectIncreaseKeyword(String industryName) {
-        System.out.println("" + industryName);
+        System.out.println("serviceImpl :" + industryName);
 
         List<IncreaseKeyword> increaseKeyword = increaseKeywordRepository.findByIncreaseKeyword(industryName);
 
