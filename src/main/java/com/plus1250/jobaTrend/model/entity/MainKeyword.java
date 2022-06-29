@@ -28,4 +28,5 @@ public class MainKeyword {
 
     @Column(name="key_cnt")
     private double keyCnt;
+
 }

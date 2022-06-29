@@ -11,7 +11,7 @@ import java.util.List;
 // 언급량 분석 / 월별트렌드 키워드 / 과거 월별 조회 / 상승 키워드
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping()
+@RequestMapping("/")
 public class KeywordController {
 
     private final KeywordService keywordService;
