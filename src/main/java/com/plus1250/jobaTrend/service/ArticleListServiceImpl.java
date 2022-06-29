@@ -19,12 +19,17 @@ public class ArticleListServiceImpl implements ArticleListService {
     private final ArticleListRepository articleListRepository;
 
 
+//   @Override
+//    public List<ArticleListDTO> selectArticleInfo(String industryName) {
+//        return null;
+//   }
+
     @Override
-    public List<ArticleListDTO> selectArticleInfo(String industryName) {
-        System.out.println("serviceImpl : " + industryName);
+    public List<ArticleListDTO> selectArticleInfo(ArticleListDTO articleListDTO) {
+        System.out.println("serviceImpl : " + articleListDTO);
 
         // DB
-        List<ArticleList> articleList = articleListRepository.findByIndustryName(industryName);
+        List<ArticleList> articleList = articleListRepository.findByIndustryName(articleListDTO.getIndustryName());
 
 //        ArticleList result = articleList.get(0);
 //        System.out.println(result);
@@ -47,4 +52,5 @@ public class ArticleListServiceImpl implements ArticleListService {
         System.out.println(result);
         return result;
     }
+
 }

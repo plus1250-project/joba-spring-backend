@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import javax.validation.Valid;
 
 @CrossOrigin(origins = "*")
@@ -28,33 +30,25 @@ public class UserController {
 //        return userService.insertUser(userDTO);
 //    }
 
-    @GetMapping(value = "/new")
-    public String uer(Model model){
-        model.addAttribute("UserDto", new UserDto());
-        return "user";
+
+
+    // 회원 정보 수정
+    @PostMapping("/update")
+    public void updateUser(@RequestBody UserDTO userDTO) {
+        userService.updateUser(userDTO);
     }
 
-    @PostMapping(value = "/new")
-    public String user(@Valid UserDTO userDTO, BindingResult bindingResult, Model model ) {
-        if(bindingResult.hasErrors()){
-            return "user";
-        }
-
-        try (
-                User user = User.createUser(UserDTO userDTO);
-                userService.insertUser(user);
-                ) catch (IllegalStateException e){
-            model.addAttribute("errorMessage", e.getMessage());
-            return "user";
-        }
-    }   return "";
-
+    // 회원탈퇴
+    @PostMapping("/delete")
+    public void deleteUser(@RequestBody UserDTO userDTO) {
+        userService.deleteUser(userDTO);
+    }
 
     // 로그인
-    @PostMapping("/login")
-    public Boolean loginUser(@RequestBody UserDTO userDTO) {
-        System.out.println(userDTO);
-        return userService.loginUser(userDTO);
-    }
+//   @PostMapping("/login")
+//   public Boolean loginUser(@RequestBody UserDTO userDTO) {
+//       System.out.println(userDTO);
+//       return userService.loginUser(userDTO);
+//   }
 
 }

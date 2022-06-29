@@ -1,11 +1,12 @@
 package com.plus1250.jobaTrend.model.dto;
 
-
 import com.plus1250.jobaTrend.model.entity.ArticleList;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class ArticleListDTO {
     private String articleUrl;
     private String articleTitle;
@@ -14,6 +15,10 @@ public class ArticleListDTO {
     private String industryName;
 
     public ArticleListDTO() {}
+
+    public ArticleListDTO(String industryName) {
+        this.industryName = industryName;
+    }
 
     public ArticleListDTO(ArticleList r) {
         this.articleUrl = r.getArticleUrl();

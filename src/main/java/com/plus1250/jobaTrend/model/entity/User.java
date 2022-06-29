@@ -10,12 +10,25 @@ import javax.persistence.Table;
 public class User {
 
     @Id
-    @Column(name="user_id")
-    private String userId;
-
     @Column(name="user_email")
     private String userEmail;
 
     @Column(name="user_pw")
     private String userPw;
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserPw() {
+        return userPw;
+    }
+
+    public void setUserPw(String userPw) {
+        this.userPw = userPw;
+    }
 }
