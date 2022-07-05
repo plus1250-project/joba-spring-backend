@@ -4,17 +4,18 @@ import com.plus1250.jobaTrend.model.dto.*;
 
 import com.plus1250.jobaTrend.model.entity.IncreaseKeyword;
 import com.plus1250.jobaTrend.model.entity.KeywordMonthList;
-import com.plus1250.jobaTrend.model.entity.MainKeyword;
+import com.plus1250.jobaTrend.model.entity.TrendKeywordList;
 import com.plus1250.jobaTrend.model.entity.MonthlyKeyword;
 
 import com.plus1250.jobaTrend.repository.IncreaseKeywordRepository;
 import com.plus1250.jobaTrend.repository.KeywordMonthListRepository;
-import com.plus1250.jobaTrend.repository.MainKeywordRepository;
+import com.plus1250.jobaTrend.repository.TrendKeywordListRepository;
 import com.plus1250.jobaTrend.repository.MonthlyKeywordRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class KeywordServiceImpl implements KeywordService {
     private final IncreaseKeywordRepository increaseKeywordRepository;
 
     @Autowired
-    private final MainKeywordRepository mainKeywordRepository;
+    private final TrendKeywordListRepository trendKeywordListRepository;
 
     @Autowired
     private final KeywordMonthListRepository keywordMonthListRepository;
@@ -43,18 +44,11 @@ public class KeywordServiceImpl implements KeywordService {
         return result;
     }
 
-    // 언급량 분석
+    // 트렌드 키워드 리스트
     @Override
-    public List<MainKeywordDTO> selectMainKeyword(MainKeywordDTO mainKeywordDTO) {
-
-        // 받은 파라미터 값 확인
-        System.out.println("serviceImpl :" + mainKeywordDTO);
-
-        // DB
-        List<MainKeyword> mainKeyword = mainKeywordRepository.findByMainKeyword(mainKeywordDTO.getIndustryName());
-
-        List<MainKeywordDTO> result = mainKeyword.stream().map(r -> new MainKeywordDTO(r)).collect(Collectors.toList());
-        System.out.println(result);
+    public List<TrendKeywordListDTO> selectTrendKeywordList(TrendKeywordListDTO trendKeywordListDTO) {
+        List<TrendKeywordList> trendKeywordList = trendKeywordListRepository.findByIndustryNameAndRegMonth(trendKeywordListDTO.getIndustryName(), trendKeywordListDTO.getIssueDate());
+        List<TrendKeywordListDTO> result = trendKeywordList.stream().map(r-> new TrendKeywordListDTO(r)).collect(Collectors.toList());
 
         return result;
     }

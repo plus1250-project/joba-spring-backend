@@ -2,10 +2,11 @@ package com.plus1250.jobaTrend.controller;
 
 import com.plus1250.jobaTrend.model.dto.IncreaseKeywordDTO;
 import com.plus1250.jobaTrend.model.dto.KeywordMonthListDTO;
-import com.plus1250.jobaTrend.model.dto.MainKeywordDTO;
+import com.plus1250.jobaTrend.model.dto.TrendKeywordListDTO;
 import com.plus1250.jobaTrend.model.dto.MonthlyKeywordDTO;
 import com.plus1250.jobaTrend.service.KeywordService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -16,20 +17,21 @@ import java.util.List;
 @RequestMapping("/")
 public class KeywordController {
 
+    @Autowired
     private final KeywordService keywordService;
 
     // 상승 키워드
     @PostMapping("/increase_keyword/{keyword]")
-    public List<IncreaseKeywordDTO> selectIncreaseKeyword(@RequestParam IncreaseKeywordDTO increaseKeywordDTO) {
+    public String selectIncreaseKeyword(@RequestParam IncreaseKeywordDTO increaseKeywordDTO) {
         System.out.println("selectIncreaseKeyword called!");
         return keywordService.selectIncreaseKeyword(increaseKeywordDTO);
     }
 
     // 언급량 분석
     @PostMapping("/main_keyword/{keyword}")
-    public List<MainKeywordDTO> selectMainKeyword(@RequestParam MainKeywordDTO industryName) {
+    public List<TrendKeywordListDTO> selectTrenddeywordList(@RequestParam TrendKeywordListDTO trendKeywordListDTO) {
         System.out.println("selectMainKeyword called!");
-        return keywordService.selectMainKeyword(industryName);
+        return keywordService.selectTrendKeywordList(trendKeywordListDTO);
     }
 
     // 월별 트렌드 분석
