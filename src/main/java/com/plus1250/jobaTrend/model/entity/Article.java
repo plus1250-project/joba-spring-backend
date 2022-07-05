@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@IdClass(ArticleListCompositeKey.class)
+@IdClass(ArticleCompositeKey.class)
 @Table(name="indus_article_list")
-public class ArticleList {
+public class Article {
 
     @Id
     @Column(name="main_indus_name")
@@ -29,14 +29,14 @@ public class ArticleList {
     @Column(name="press")
     private String press;
 
-    public ArticleList() {}
+    public Article() {}
 
-    public ArticleList(String industryName) {
+    public Article(String industryName) {
         this.industryName = industryName;
     }
 
     @Builder
-    public ArticleList(String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
+    public Article(String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
         this.industryName = industryName;
         this.articleUrl = articleUrl;
         this.issueDate = issueDate;
