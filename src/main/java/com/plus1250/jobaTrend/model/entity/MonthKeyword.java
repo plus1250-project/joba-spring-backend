@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@IdClass(MonthKeywordListCompositeKey.class)
+@IdClass(MonthKeywordCompositeKey.class)
 @Table(name="month_keyword_list")
-public class MonthKeywordList {
+public class MonthKeyword {
 
     @Id
     @Column(name="keyword")
@@ -26,10 +26,10 @@ public class MonthKeywordList {
     @Column(name="keyword_count")
     private int keywordCnt;
 
-    public MonthKeywordList() {}
+    public MonthKeyword() {}
 
     @Builder
-    public MonthKeywordList(String keyword, String regMonth, String industryName, int keywordCnt) {
+    public MonthKeyword(String keyword, String regMonth, String industryName, int keywordCnt) {
         this.keyword = keyword;
         this.regMonth = regMonth;
         this.industryName = industryName;

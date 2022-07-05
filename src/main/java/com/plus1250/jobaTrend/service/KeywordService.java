@@ -14,7 +14,7 @@ public interface KeywordService {
     List<TrendKeywordListDTO> selectTrendKeywordList(TrendKeywordListDTO trendKeywordListDTO);
 
     // 월별 키워드 리스트
-    List<MonthKeywordListDTO> selectMonthKeywordList(MonthKeywordListDTO monthKeywordListDTO);
+    List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO);
 
     // 월별 랭킹 키워드 리스트
     List<MonthRankKeywordDTO> selectMonthRankKeyword(MonthRankKeywordDTO monthRankKeywordDTO);
