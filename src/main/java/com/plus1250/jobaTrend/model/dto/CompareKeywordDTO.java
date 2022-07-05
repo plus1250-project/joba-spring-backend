@@ -14,8 +14,9 @@ public class CompareKeywordDTO {
 
     public CompareKeywordDTO() {}
 
-    public CompareKeywordDTO(String industryName) {
+    public CompareKeywordDTO(String industryName, String regMonth) {
         this.industryName = industryName;
+        this.regMonth = regMonth;
     }
 
     public CompareKeywordDTO(CompareKeyword r) {
