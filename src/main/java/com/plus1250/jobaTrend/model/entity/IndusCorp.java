@@ -7,9 +7,9 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@IdClass(IndusCorpListCompositeKey.class)
+@IdClass(IndusCorpCompositeKey.class)
 @Table(name="indus_corp_list")
-public class IndusCorpList {
+public class IndusCorp {
 
     @Id
     @Column(name="industry_name")
@@ -26,14 +26,14 @@ public class IndusCorpList {
     @Column(name="corp_rank")
     private int corpRank;
 
-    public IndusCorpList() {}
+    public IndusCorp() {}
 
-    public IndusCorpList(String industryName) {
+    public IndusCorp(String industryName) {
         this.industryName = industryName;
     }
 
     @Builder
-    public IndusCorpList(String industryName, String regMonth, String corpName, int corpRank) {
+    public IndusCorp(String industryName, String regMonth, String corpName, int corpRank) {
         this.industryName = industryName;
         this.regMonth = regMonth;
         this.corpName = corpName;
