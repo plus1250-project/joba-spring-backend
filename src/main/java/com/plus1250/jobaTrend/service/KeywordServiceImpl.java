@@ -23,6 +23,9 @@ import java.util.stream.Collectors;
 public class KeywordServiceImpl implements KeywordService {
 
     @Autowired
+    private final IncreaseKeywordRepository increaseKeywordRepository;
+
+    @Autowired
     private final MainKeywordRepository mainKeywordRepository;
 
     @Autowired
@@ -31,8 +34,14 @@ public class KeywordServiceImpl implements KeywordService {
     @Autowired
     private final MonthlyKeywordRepository monthlyKeywordRepository;
 
-    @Autowired
-    private final IncreaseKeywordRepository increaseKeywordRepository;
+    // 상승 키워드
+    @Override
+    public String selectIncreaseKeyword(IncreaseKeywordDTO increaseKeywordDTO) {
+        IncreaseKeyword increaseKeyword = increaseKeywordRepository.findByIndustryNameAndRegMonth(increaseKeywordDTO.getIndustryName(), increaseKeywordDTO.getRegMonth());
+        String result = increaseKeyword.getKeyword();
+
+        return result;
+    }
 
     // 언급량 분석
     @Override
@@ -76,16 +85,5 @@ public class KeywordServiceImpl implements KeywordService {
         return result;
     }
 
-    // 상승 키워드
-    @Override
-    public List<IncreaseKeywordDTO> selectIncreaseKeyword(IncreaseKeywordDTO increaseKeywordDTO) {
-        System.out.println("serviceImpl :" + increaseKeywordDTO);
 
-        List<IncreaseKeyword> increaseKeyword = increaseKeywordRepository.findByIncreaseKeyword(increaseKeywordDTO.getIndustryName());
-
-        List<IncreaseKeywordDTO> result = increaseKeyword.stream().map(r -> new IncreaseKeywordDTO(r)).collect(Collectors.toList());
-        System.out.println(result);
-
-        return result;
-    }
 }
