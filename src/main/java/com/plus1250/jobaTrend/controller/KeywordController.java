@@ -38,20 +38,19 @@ public class KeywordController {
         return keywordService.selectMonthKeyword(monthKeywordDTO);
     }
 
-    // 월별 키워드 리스트
-    @PostMapping("/month_keyword/{keyword}")
-    public List<MonthRankKeywordDTO> selectMonthRankKeywordList(@RequestParam MonthRankKeywordDTO monthRankKeywordDTO) {
+    // 월별 랭킹 키워드 리스트
+    @PostMapping("/month_rank_keyword/{keyword}")
+    public List<MonthRankKeywordDTO> selectMonthRankKeyword(@RequestParam MonthRankKeywordDTO monthRankKeywordDTO) {
         System.out.println("selectMonthKeyword called!");
         return keywordService.selectMonthRankKeyword(monthRankKeywordDTO);
     }
 
-    // 과거 월별 조회
-    @PostMapping("/keyword_month_list/{keyword}{month}")
-    public List<KeywordMonthListDTO> selectKeywordMonthInfo(@RequestParam KeywordMonthListDTO industryName) {
-        System.out.println("selectKeywordMonthInfo called!");
-        return keywordService.selectKeywordMonthInfo(industryName);
+    // 월별 랭킹 키워드 전월 대비 분석 리스트
+    @PostMapping("/compare_keyword/{keyword}")
+    public List<CompareKeywordDTO> selectCompareKeyword(@RequestParam CompareKeywordDTO compareKeywordDTO) {
+        System.out.println("selectCompareKeyword called!");
+        return keywordService.selectCompareKeyword(compareKeywordDTO);
     }
-
 
 }
 
