@@ -18,10 +18,10 @@ public class KeywordController {
     private final KeywordService keywordService;
 
     // 상승 키워드
-    @GetMapping("/increase_keyword/{keyword}")
-    public String selectIncreaseKeyword(@RequestParam IncreaseKeywordDTO increaseKeywordDTO) {
+    @GetMapping("/increase-keyword/{industryName}/{regMonth}")
+    public String selectIncreaseKeyword(@PathVariable String industryName, @PathVariable String regMonth) {
         System.out.println("selectIncreaseKeyword called!");
-        return keywordService.selectIncreaseKeyword(increaseKeywordDTO);
+        return keywordService.selectIncreaseKeyword(new IncreaseKeywordDTO(industryName, regMonth));
     }
 
     // 트렌드 키워드 리스트
