@@ -11,7 +11,7 @@ public interface KeywordService {
     String selectIncreaseKeyword(IncreaseKeywordDTO increaseKeywordDTO);
 
     // 트렌드 키워드 리스트
-    List<TrendKeywordListDTO> selectTrendKeywordList(TrendKeywordListDTO trendKeywordListDTO);
+    List<TrendKeywordDTO> selectTrendKeyword(TrendKeywordDTO trendKeywordDTO);
 
     // 월별 키워드 리스트
     List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO);

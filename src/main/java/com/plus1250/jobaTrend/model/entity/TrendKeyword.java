@@ -8,9 +8,9 @@ import java.util.Date;
 
 @Entity
 @Getter
-@IdClass(TrendKeywordListCompositeKey.class)
+@IdClass(TrendKeywordCompositeKey.class)
 @Table(name="trend_keyword_list")
-public class TrendKeywordList {
+public class TrendKeyword {
 
     @Id
     @Column(name="main_indus_name")
@@ -30,12 +30,12 @@ public class TrendKeywordList {
     @Column(name="trend_rank")
     private int trendRank;
 
-    public TrendKeywordList() {}
+    public TrendKeyword() {}
 
-    public TrendKeywordList(String industryName) {}
+    public TrendKeyword(String industryName) {}
 
     @Builder
-    public TrendKeywordList(String industryName, Date issueDate, String keyword, int keywordCnt, int trendRank) {
+    public TrendKeyword(String industryName, Date issueDate, String keyword, int keywordCnt, int trendRank) {
         this.industryName = industryName;
         this.issueDate = issueDate;
         this.keyword = keyword;

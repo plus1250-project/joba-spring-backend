@@ -20,7 +20,7 @@ public class KeywordServiceImpl implements KeywordService {
     private final IncreaseKeywordRepository increaseKeywordRepository;
 
     @Autowired
-    private final TrendKeywordListRepository trendKeywordListRepository;
+    private final TrendKeywordRepository trendKeywordRepository;
 
     @Autowired
     private final MonthKeywordRepository monthKeywordRepository;
@@ -39,9 +39,9 @@ public class KeywordServiceImpl implements KeywordService {
 
     // 트렌드 키워드 리스트
     @Override
-    public List<TrendKeywordListDTO> selectTrendKeywordList(TrendKeywordListDTO trendKeywordListDTO) {
-        List<TrendKeywordList> trendKeywordList = trendKeywordListRepository.findByIndustryNameAndRegMonth(trendKeywordListDTO.getIndustryName(), trendKeywordListDTO.getIssueDate());
-        List<TrendKeywordListDTO> result = trendKeywordList.stream().map(r-> new TrendKeywordListDTO(r)).collect(Collectors.toList());
+    public List<TrendKeywordDTO> selectTrendKeyword(TrendKeywordDTO trendKeywordDTO) {
+        List<TrendKeyword> trendKeywords = trendKeywordRepository.findByIndustryNameAndRegMonth(trendKeywordDTO.getIndustryName(), trendKeywordDTO.getIssueDate());
+        List<TrendKeywordDTO> result = trendKeywords.stream().map(r-> new TrendKeywordDTO(r)).collect(Collectors.toList());
 
         return result;
     }
@@ -49,8 +49,8 @@ public class KeywordServiceImpl implements KeywordService {
     // 월별 키워드 리스트
     @Override
     public List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO) {
-        List<MonthKeyword> monthKeyword = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
-        List<MonthKeywordDTO> result = monthKeyword.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
+        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
+        List<MonthKeywordDTO> result = monthKeywords.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
 
         return result;
     }
