@@ -19,7 +19,11 @@ public class ArticleDTO {
     }
 
     public ArticleDTO(Article r) {
-
+        this.industryName = r.getIndustryName();
+        this.articleUrl = r.getArticleUrl();
+        this.issueDate = r.getIssueDate();
+        this.articleTitle = r.getArticleTitle();
+        this.press = r.getPress();
     }
 
     @Builder
