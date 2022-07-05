@@ -1,9 +1,6 @@
 package com.plus1250.jobaTrend.service;
 
-import com.plus1250.jobaTrend.model.dto.IncreaseKeywordDTO;
-import com.plus1250.jobaTrend.model.dto.KeywordMonthListDTO;
-import com.plus1250.jobaTrend.model.dto.TrendKeywordListDTO;
-import com.plus1250.jobaTrend.model.dto.MonthKeywordListDTO;
+import com.plus1250.jobaTrend.model.dto.*;
 
 import java.util.List;
 
@@ -18,6 +15,9 @@ public interface KeywordService {
 
     // 월별 키워드 리스트
     List<MonthKeywordListDTO> selectMonthKeywordList(MonthKeywordListDTO monthKeywordListDTO);
+
+    // 월별 랭킹 키워드 리스트
+    List<MonthRankKeywordDTO> selectMonthRankKeyword(MonthRankKeywordDTO monthRankKeywordDTO);
 
     // 과거 월별 조회
     List<KeywordMonthListDTO> selectKeywordMonthInfo(KeywordMonthListDTO industryName);
