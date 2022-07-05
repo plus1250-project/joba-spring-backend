@@ -18,9 +18,9 @@ public class ArticleListController {
     private final ArticleListService articleListService;
 
     // 뉴스 기사 컨트롤러 test
-    @PostMapping("/article")
-    public List<ArticleListDTO> selectArticleInfo(@RequestParam ArticleListDTO industryName) {
-        System.out.println("controller : " + industryName);
-        return articleListService.selectArticleInfo(industryName);
+    @GetMapping("/article")
+    public List<ArticleListDTO> selectArticleInfo(@RequestParam ArticleListDTO articleListDTO) {
+        System.out.println("controller : " + articleListDTO);
+        return articleListService.selectArticleInfo(articleListDTO);
     }
 }

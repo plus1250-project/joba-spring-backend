@@ -1,31 +1,33 @@
 package com.plus1250.jobaTrend.model.entity;
 
-
 import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
 
-@Getter
 @Entity
-@Table(name="Article_list")
+@Getter
+@IdClass(ArticleListCompositeKey.class)
+@Table(name="indus_article_list")
 public class ArticleList {
+
+    @Id
+    @Column(name="main_indus_name")
+    private String industryName;
 
     @Id
     @Column(name="url")
     private String articleUrl;
 
-    @Column(name="title")
+    @Id
+    @Column(name="issue_date")
+    private String issueDate;
+
+    @Column(name="article_title")
     private String articleTitle;
 
-    @Column(name="press_company")
-    private String pubCompany;
-
-    @Column(name="date")
-    private String pubDate;
-
-    @Column(name="industry_name")
-    private String industryName;
+    @Column(name="press")
+    private String press;
 
     public ArticleList() {}
 
@@ -34,8 +36,12 @@ public class ArticleList {
     }
 
     @Builder
-    public ArticleList(String industryName, String title) {
+    public ArticleList(String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
         this.industryName = industryName;
-        this.articleTitle = title;
+        this.articleUrl = articleUrl;
+        this.issueDate = issueDate;
+        this.articleTitle = articleTitle;
+        this.press = press;
     }
 }
+
