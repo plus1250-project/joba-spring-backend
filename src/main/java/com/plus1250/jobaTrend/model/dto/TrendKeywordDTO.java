@@ -1,27 +1,27 @@
 package com.plus1250.jobaTrend.model.dto;
 
-import com.plus1250.jobaTrend.model.entity.TrendKeywordList;
+import com.plus1250.jobaTrend.model.entity.TrendKeyword;
 import lombok.Builder;
 import lombok.Getter;
 
 import java.util.Date;
 
 @Getter
-public class TrendKeywordListDTO {
+public class TrendKeywordDTO {
     private String industryName;
     private Date issueDate;
     private String keyword;
     private int keywordCnt;
     private int trendRank;
 
-    public TrendKeywordListDTO() {}
+    public TrendKeywordDTO() {}
 
-    public TrendKeywordListDTO(String industryName, Date issueDate) {
+    public TrendKeywordDTO(String industryName, Date issueDate) {
         this.industryName = industryName;
         this.issueDate = issueDate;
     }
 
-    public TrendKeywordListDTO(TrendKeywordList r) {
+    public TrendKeywordDTO(TrendKeyword r) {
         this.industryName = r.getIndustryName();
         this.issueDate = r.getIssueDate();
         this.keyword = r.getKeyword();
@@ -30,7 +30,7 @@ public class TrendKeywordListDTO {
     }
 
     @Builder
-    public TrendKeywordListDTO(String industryName, Date issueDate, String keyword, int keywordCnt, int trendRank) {
+    public TrendKeywordDTO(String industryName, Date issueDate, String keyword, int keywordCnt, int trendRank) {
         this.industryName = industryName;
         this.issueDate = issueDate;
         this.keyword = keyword;

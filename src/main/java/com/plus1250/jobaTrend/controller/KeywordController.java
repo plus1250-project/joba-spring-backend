@@ -26,9 +26,9 @@ public class KeywordController {
 
     // 트렌드 키워드 리스트
     @PostMapping("/trend_keyword/{keyword}")
-    public List<TrendKeywordListDTO> selectTrendKeywordList(@RequestParam TrendKeywordListDTO trendKeywordListDTO) {
+    public List<TrendKeywordDTO> selectTrendKeyword(@RequestParam TrendKeywordDTO trendKeywordDTO) {
         System.out.println("selectTrendKeyword called!");
-        return keywordService.selectTrendKeywordList(trendKeywordListDTO);
+        return keywordService.selectTrendKeyword(trendKeywordDTO);
     }
 
     // 월별 키워드 리스트
