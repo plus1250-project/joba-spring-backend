@@ -1,17 +1,15 @@
 package com.plus1250.jobaTrend.model.dto;
 
 import com.plus1250.jobaTrend.model.entity.IndusCorpList;
+import lombok.Builder;
+import lombok.Getter;
 
+@Getter
 public class IndusCorpListDTO {
     private String industryName;
-    private String informalName;
-    private int cnt;
-
-    public IndusCorpListDTO(String industryName, String informalName, int cnt) {
-        this.industryName = industryName;
-        this.informalName = informalName;
-        this.cnt = cnt;
-    }
+    private String regMonth;
+    private String corpName;
+    private int corpRank;
 
     public IndusCorpListDTO() {}
 
@@ -21,31 +19,16 @@ public class IndusCorpListDTO {
 
     public IndusCorpListDTO(IndusCorpList r) {
         this.industryName = r.getIndustryName();
-        this.informalName = r.getInformalName();
-        this.cnt = r.getCnt();
+        this.regMonth = r.getRegMonth();
+        this.corpName = r.getCorpName();
+        this.corpRank = r.getCorpRank();
     }
 
-    public String getIndustryName() {
-        return industryName;
-    }
-
-    public void setIndustryName(String industryName) {
+    @Builder
+    public IndusCorpListDTO(String industryName, String regMonth, String corpName, int corpRank) {
         this.industryName = industryName;
-    }
-
-    public String getInformalName() {
-        return informalName;
-    }
-
-    public void setInformalName(String informalName) {
-        this.informalName = informalName;
-    }
-
-    public int getCnt() {
-        return cnt;
-    }
-
-    public void setCnt(int cnt) {
-        this.cnt = cnt;
+        this.regMonth = regMonth;
+        this.corpName = corpName;
+        this.corpRank = corpRank;
     }
 }

@@ -18,10 +18,10 @@ public class IndusCorpListServiceImpl implements IndusCorpListService {
     private final IndusCorpListRepository indusCorpListRepository;
     
     @Override
-    public List<IndusCorpListDTO> selectIndustry(IndusCorpListDTO indusCorpListDTO) {
+    public List<IndusCorpListDTO> selectIndusCorpList(IndusCorpListDTO indusCorpListDTO) {
         System.out.println("serviceImpl :" + indusCorpListDTO);
 
-        List<IndusCorpList> indusCorpList = indusCorpListRepository.findByIndusCorpInfo(indusCorpListDTO.getIndustryName());
+        List<IndusCorpList> indusCorpList = indusCorpListRepository.findByIndustryName(indusCorpListDTO.getIndustryName());
 
         List<IndusCorpListDTO> result = indusCorpList.stream().map(r -> new IndusCorpListDTO(r)).collect(Collectors.toList());
         System.out.println(result);
