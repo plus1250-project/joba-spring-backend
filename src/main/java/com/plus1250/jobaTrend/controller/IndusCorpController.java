@@ -12,15 +12,16 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
-public class IndustryCorpController {
+public class IndusCorpController {
 
     @Autowired
     private final IndusCorpService indusCorpService;
 
     // 산업군 기업 리스트
-    @GetMapping("/indus_corp_list")
-    public List<IndusCorpDTO> selectIndusCorp(@RequestParam IndusCorpDTO indusCorpDTO) {
-        System.out.println("controller: IndusCorpList");
-        return indusCorpService.selectIndusCorp(indusCorpDTO);
+    @GetMapping("/indus-corp")
+    public List<IndusCorpDTO> selectIndusCorp(@RequestParam String industryName, @RequestParam String regMonth) {
+
+        return indusCorpService.selectIndusCorp(new IndusCorpDTO(industryName, regMonth));
+
     }
 }

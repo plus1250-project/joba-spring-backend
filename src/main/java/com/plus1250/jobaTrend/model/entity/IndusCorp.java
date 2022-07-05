@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class IndusCorp {
 
     @Id
-    @Column(name="industry_name")
+    @Column(name="main_indus_name")
     private String industryName;
 
     @Id

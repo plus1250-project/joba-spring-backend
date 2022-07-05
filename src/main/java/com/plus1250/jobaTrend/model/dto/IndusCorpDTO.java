@@ -13,8 +13,9 @@ public class IndusCorpDTO {
 
     public IndusCorpDTO() {}
 
-    public IndusCorpDTO(String industryName) {
+    public IndusCorpDTO(String industryName, String regMonth) {
         this.industryName = industryName;
+        this.regMonth = regMonth;
     }
 
     public IndusCorpDTO(IndusCorp r) {
