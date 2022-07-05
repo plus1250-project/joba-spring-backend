@@ -18,6 +18,13 @@ public class KeywordController {
 
     private final KeywordService keywordService;
 
+    // 상승 키워드
+    @PostMapping("/increase_keyword/{keyword]")
+    public List<IncreaseKeywordDTO> selectIncreaseKeyword(@RequestParam IncreaseKeywordDTO increaseKeywordDTO) {
+        System.out.println("selectIncreaseKeyword called!");
+        return keywordService.selectIncreaseKeyword(increaseKeywordDTO);
+    }
+
     // 언급량 분석
     @PostMapping("/main_keyword/{keyword}")
     public List<MainKeywordDTO> selectMainKeyword(@RequestParam MainKeywordDTO industryName) {
@@ -39,11 +46,6 @@ public class KeywordController {
         return keywordService.selectKeywordMonthInfo(industryName);
     }
 
-    // 상승 키워드
-    @PostMapping("/increase_keyword/{keyword]")
-    public List<IncreaseKeywordDTO> selectIncreaseKeyword(@RequestParam IncreaseKeywordDTO industryName) {
-        System.out.println("selectIncreaseKeyword called!");
-        return keywordService.selectIncreaseKeyword(industryName);
-    }
+
 }
 

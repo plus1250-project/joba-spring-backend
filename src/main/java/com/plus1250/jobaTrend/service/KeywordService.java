@@ -10,6 +10,9 @@ import java.util.List;
 
 public interface KeywordService {
 
+    // 상승 키워드
+    String selectIncreaseKeyword(IncreaseKeywordDTO increaseKeywordDTO);
+
     // 언급량 분석
     List<MainKeywordDTO> selectMainKeyword(MainKeywordDTO industryName);
 
@@ -19,7 +22,6 @@ public interface KeywordService {
     // 과거 월별 조회
     List<KeywordMonthListDTO> selectKeywordMonthInfo(KeywordMonthListDTO industryName);
 
-    // 상승 키워드
-    List<IncreaseKeywordDTO> selectIncreaseKeyword(IncreaseKeywordDTO industryName);
+
 }
 

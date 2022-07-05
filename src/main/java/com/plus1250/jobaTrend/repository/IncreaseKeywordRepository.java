@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface IncreaseKeywordRepository extends JpaRepository<IncreaseKeyword, String> {
 
-    List<IncreaseKeyword> findByIncreaseKeyword(String industryName);
+    IncreaseKeyword findByIndustryNameAndRegMonth(String industryName, String regMonth);
 }
 
