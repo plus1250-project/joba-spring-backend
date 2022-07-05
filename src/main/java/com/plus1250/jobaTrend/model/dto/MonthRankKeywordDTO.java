@@ -14,7 +14,10 @@ public class MonthRankKeywordDTO {
 
     public MonthRankKeywordDTO() {}
 
-    public MonthRankKeywordDTO(String industryName) {}
+    public MonthRankKeywordDTO(String industryName, String regMonth) {
+        this.industryName = industryName;
+        this.regMonth = regMonth;
+    }
 
     public MonthRankKeywordDTO(MonthRankKeyword r) {
         this.industryName = r.getIndustryName();

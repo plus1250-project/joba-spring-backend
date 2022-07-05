@@ -41,10 +41,10 @@ public class KeywordController {
     }
 
     // 월별 랭킹 키워드 리스트
-    @PostMapping("/month_rank_keyword/{keyword}")
-    public List<MonthRankKeywordDTO> selectMonthRankKeyword(@RequestParam MonthRankKeywordDTO monthRankKeywordDTO) {
+    @GetMapping("/month-rank-keyword/{industryName}/{regMonth}")
+    public List<MonthRankKeywordDTO> selectMonthRankKeyword(@PathVariable String industryName, @PathVariable String regMonth) {
         System.out.println("selectMonthKeyword called!");
-        return keywordService.selectMonthRankKeyword(monthRankKeywordDTO);
+        return keywordService.selectMonthRankKeyword(new MonthRankKeywordDTO(industryName, regMonth));
     }
 
     // 월별 랭킹 키워드 전월 대비 분석 리스트
