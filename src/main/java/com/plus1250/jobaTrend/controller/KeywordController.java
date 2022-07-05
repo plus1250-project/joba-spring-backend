@@ -34,10 +34,10 @@ public class KeywordController {
     }
 
     // 월별 키워드 리스트
-    @PostMapping("/month_keyword/{keyword}")
-    public List<MonthKeywordDTO> selectMonthKeyword(@RequestParam MonthKeywordDTO monthKeywordDTO) {
+    @GetMapping("/month-keyword/{keyword}/{industryName}/{regMonth}")
+    public List<MonthKeywordDTO> selectMonthKeyword(@PathVariable String keyword, @PathVariable String industryName, @PathVariable String regMonth) {
         System.out.println("selectMonthKeyword called!");
-        return keywordService.selectMonthKeyword(monthKeywordDTO);
+        return keywordService.selectMonthKeyword(new MonthKeywordDTO(keyword, industryName, regMonth));
     }
 
     // 월별 랭킹 키워드 리스트
