@@ -33,9 +33,9 @@ public class KeywordController {
 
     // 월별 키워드 리스트
     @PostMapping("/month_keyword/{keyword}")
-    public List<MonthKeywordListDTO> selectMonthKeywordList(@RequestParam MonthKeywordListDTO monthKeywordListDTO) {
+    public List<MonthKeywordDTO> selectMonthKeyword(@RequestParam MonthKeywordDTO monthKeywordDTO) {
         System.out.println("selectMonthKeyword called!");
-        return keywordService.selectMonthKeywordList(monthKeywordListDTO);
+        return keywordService.selectMonthKeyword(monthKeywordDTO);
     }
 
     // 월별 키워드 리스트

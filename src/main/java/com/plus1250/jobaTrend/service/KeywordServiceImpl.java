@@ -23,7 +23,7 @@ public class KeywordServiceImpl implements KeywordService {
     private final TrendKeywordListRepository trendKeywordListRepository;
 
     @Autowired
-    private final MonthKeywordListRepository monthKeywordListRepository;
+    private final MonthKeywordRepository monthKeywordRepository;
 
     @Autowired
     private final MonthRankKeywordRepository monthRankKeywordRepository;
@@ -48,9 +48,9 @@ public class KeywordServiceImpl implements KeywordService {
 
     // 월별 키워드 리스트
     @Override
-    public List<MonthKeywordListDTO> selectMonthKeywordList(MonthKeywordListDTO monthKeywordListDTO) {
-        List<MonthKeywordList> monthKeywordList = monthKeywordListRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordListDTO.getKeyword(), monthKeywordListDTO.getIndustryName(), monthKeywordListDTO.getRegMonth());
-        List<MonthKeywordListDTO> result = monthKeywordList.stream().map(r -> new MonthKeywordListDTO(r)).collect(Collectors.toList());
+    public List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO) {
+        List<MonthKeyword> monthKeyword = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
+        List<MonthKeywordDTO> result = monthKeyword.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
 
         return result;
     }
