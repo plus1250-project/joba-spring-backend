@@ -1,7 +1,7 @@
 package com.plus1250.jobaTrend.controller;
 
-import com.plus1250.jobaTrend.model.dto.IndusCorpListDTO;
-import com.plus1250.jobaTrend.service.IndusCorpListService;
+import com.plus1250.jobaTrend.model.dto.IndusCorpDTO;
+import com.plus1250.jobaTrend.service.IndusCorpService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,15 +12,15 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/")
-public class IndustryCorpListController {
+public class IndustryCorpController {
 
     @Autowired
-    private final IndusCorpListService indusCorpListService;
+    private final IndusCorpService indusCorpService;
 
     // 산업군 기업 리스트
     @GetMapping("/indus_corp_list")
-    public List<IndusCorpListDTO> selectIndusCorpList(@RequestParam IndusCorpListDTO indusCorpListDTO) {
+    public List<IndusCorpDTO> selectIndusCorp(@RequestParam IndusCorpDTO indusCorpDTO) {
         System.out.println("controller: IndusCorpList");
-        return indusCorpListService.selectIndustry(indusCorpListDTO);
+        return indusCorpService.selectIndusCorp(indusCorpDTO);
     }
 }

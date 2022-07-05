@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/")
 @RequiredArgsConstructor
 @RestController
-public class ArticleListController {
+public class ArticleController {
 
     @Autowired
     private final ArticleService articleService;

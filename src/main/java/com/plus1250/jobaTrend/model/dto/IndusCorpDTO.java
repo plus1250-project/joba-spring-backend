@@ -1,23 +1,23 @@
 package com.plus1250.jobaTrend.model.dto;
 
-import com.plus1250.jobaTrend.model.entity.IndusCorpList;
+import com.plus1250.jobaTrend.model.entity.IndusCorp;
 import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-public class IndusCorpListDTO {
+public class IndusCorpDTO {
     private String industryName;
     private String regMonth;
     private String corpName;
     private int corpRank;
 
-    public IndusCorpListDTO() {}
+    public IndusCorpDTO() {}
 
-    public IndusCorpListDTO(String industryName) {
+    public IndusCorpDTO(String industryName) {
         this.industryName = industryName;
     }
 
-    public IndusCorpListDTO(IndusCorpList r) {
+    public IndusCorpDTO(IndusCorp r) {
         this.industryName = r.getIndustryName();
         this.regMonth = r.getRegMonth();
         this.corpName = r.getCorpName();
@@ -25,7 +25,7 @@ public class IndusCorpListDTO {
     }
 
     @Builder
-    public IndusCorpListDTO(String industryName, String regMonth, String corpName, int corpRank) {
+    public IndusCorpDTO(String industryName, String regMonth, String corpName, int corpRank) {
         this.industryName = industryName;
         this.regMonth = regMonth;
         this.corpName = corpName;
