@@ -28,6 +28,9 @@ public class KeywordServiceImpl implements KeywordService {
     @Autowired
     private final MonthRankKeywordRepository monthRankKeywordRepository;
 
+    @Autowired
+    private final CompareKeywordRepository compareKeywordRepository;
+
     // 상승 키워드
     @Override
     public String selectIncreaseKeyword(IncreaseKeywordDTO increaseKeywordDTO) {
@@ -64,14 +67,14 @@ public class KeywordServiceImpl implements KeywordService {
         return result;
     }
 
-    // 과거 월별 조회
+    // 월별 랭킹 키워드 전월 대비 분석 리스트
     @Override
-    public List<KeywordMonthListDTO> selectKeywordMonthInfo(KeywordMonthListDTO keywordMonthListDTO) {
-        System.out.println("serviceImpl :" + keywordMonthListDTO);
+    public List<CompareKeywordDTO> selectCompareKeyword(CompareKeywordDTO compareKeywordDTO) {
+        System.out.println("serviceImpl :" + compareKeywordDTO);
 
-        List<KeywordMonthList> keywordMonthList = keywordMonthListRepository.findByKeywordMonthList(keywordMonthListDTO.getIndustryName());
+        List<CompareKeyword> compareKeywords = compareKeywordRepository.findByIndustryNameAndRegMonth(compareKeywordDTO.getIndustryName(), compareKeywordDTO.getRegMonth());
 
-        List<KeywordMonthListDTO> result = keywordMonthList.stream().map(r-> new KeywordMonthListDTO(r)).collect(Collectors.toList());
+        List<CompareKeywordDTO> result = compareKeywords.stream().map(r-> new CompareKeywordDTO(r)).collect(Collectors.toList());
         System.out.println(result);
 
         return result;

@@ -19,8 +19,8 @@ public interface KeywordService {
     // 월별 랭킹 키워드 리스트
     List<MonthRankKeywordDTO> selectMonthRankKeyword(MonthRankKeywordDTO monthRankKeywordDTO);
 
-    // 과거 월별 조회
-    List<KeywordMonthListDTO> selectKeywordMonthInfo(KeywordMonthListDTO industryName);
+    // 월별 랭킹 키워드 전원 대비 분석 리스트
+    List<CompareKeywordDTO> selectCompareKeyword(CompareKeywordDTO compareKeywordDTO);
 
 
 }
