@@ -1,9 +1,6 @@
 package com.plus1250.jobaTrend.controller;
 
-import com.plus1250.jobaTrend.model.dto.IncreaseKeywordDTO;
-import com.plus1250.jobaTrend.model.dto.KeywordMonthListDTO;
-import com.plus1250.jobaTrend.model.dto.TrendKeywordListDTO;
-import com.plus1250.jobaTrend.model.dto.MonthKeywordListDTO;
+import com.plus1250.jobaTrend.model.dto.*;
 import com.plus1250.jobaTrend.service.KeywordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +36,13 @@ public class KeywordController {
     public List<MonthKeywordListDTO> selectMonthKeywordList(@RequestParam MonthKeywordListDTO monthKeywordListDTO) {
         System.out.println("selectMonthKeyword called!");
         return keywordService.selectMonthKeywordList(monthKeywordListDTO);
+    }
+
+    // 월별 키워드 리스트
+    @PostMapping("/month_keyword/{keyword}")
+    public List<MonthRankKeywordDTO> selectMonthRankKeywordList(@RequestParam MonthRankKeywordDTO monthRankKeywordDTO) {
+        System.out.println("selectMonthKeyword called!");
+        return keywordService.selectMonthRankKeyword(monthRankKeywordDTO);
     }
 
     // 과거 월별 조회
