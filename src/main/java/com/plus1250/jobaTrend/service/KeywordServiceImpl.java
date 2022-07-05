@@ -43,7 +43,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 트렌드 키워드 리스트
     @Override
     public List<TrendKeywordDTO> selectTrendKeyword(TrendKeywordDTO trendKeywordDTO) {
-        List<TrendKeyword> trendKeywords = trendKeywordRepository.findByIndustryNameAndRegMonth(trendKeywordDTO.getIndustryName(), trendKeywordDTO.getIssueDate());
+        List<TrendKeyword> trendKeywords = trendKeywordRepository.findByIndustryNameAndIssueDate(trendKeywordDTO.getIndustryName(), trendKeywordDTO.getIssueDate());
         List<TrendKeywordDTO> result = trendKeywords.stream().map(r-> new TrendKeywordDTO(r)).collect(Collectors.toList());
 
         return result;
