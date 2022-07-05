@@ -5,17 +5,16 @@ import com.plus1250.jobaTrend.model.dto.*;
 import com.plus1250.jobaTrend.model.entity.IncreaseKeyword;
 import com.plus1250.jobaTrend.model.entity.KeywordMonthList;
 import com.plus1250.jobaTrend.model.entity.TrendKeywordList;
-import com.plus1250.jobaTrend.model.entity.MonthlyKeyword;
+import com.plus1250.jobaTrend.model.entity.MonthKeywordList;
 
 import com.plus1250.jobaTrend.repository.IncreaseKeywordRepository;
 import com.plus1250.jobaTrend.repository.KeywordMonthListRepository;
 import com.plus1250.jobaTrend.repository.TrendKeywordListRepository;
-import com.plus1250.jobaTrend.repository.MonthlyKeywordRepository;
+import com.plus1250.jobaTrend.repository.MonthKeywordListRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -33,7 +32,7 @@ public class KeywordServiceImpl implements KeywordService {
     private final KeywordMonthListRepository keywordMonthListRepository;
 
     @Autowired
-    private final MonthlyKeywordRepository monthlyKeywordRepository;
+    private final MonthKeywordListRepository monthKeywordListRepository;
 
     // 상승 키워드
     @Override
@@ -53,15 +52,11 @@ public class KeywordServiceImpl implements KeywordService {
         return result;
     }
 
-    // 월별 트렌드 분석
+    // 월별 키워드 리스트
     @Override
-    public List<MonthlyKeywordDTO> selectMonthlyKeyword(MonthlyKeywordDTO monthlyKeywordDTO) {
-        System.out.println("serviceImpl :" + monthlyKeywordDTO);
-
-        List<MonthlyKeyword> monthlyKeyword = monthlyKeywordRepository.findByMonthlyKeyword(monthlyKeywordDTO.getIndustryName());
-
-        List<MonthlyKeywordDTO> result = monthlyKeyword.stream().map(r -> new MonthlyKeywordDTO(r)).collect(Collectors.toList());
-        System.out.println(result);
+    public List<MonthKeywordListDTO> selectMonthKeywordList(MonthKeywordListDTO monthKeywordListDTO) {
+        List<MonthKeywordList> monthKeywordList = monthKeywordListRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordListDTO.getKeyword(), monthKeywordListDTO.getIndustryName(), monthKeywordListDTO.getRegMonth());
+        List<MonthKeywordListDTO> result = monthKeywordList.stream().map(r -> new MonthKeywordListDTO(r)).collect(Collectors.toList());
 
         return result;
     }
