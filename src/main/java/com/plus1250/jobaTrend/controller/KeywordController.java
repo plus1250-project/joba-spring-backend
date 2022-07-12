@@ -23,7 +23,7 @@ public class KeywordController {
     // 상승 키워드
     @GetMapping("/increase-keyword/{industryName}/{regMonth}")
     public String selectIncreaseKeyword(@PathVariable String industryName, @PathVariable String regMonth) {
-        System.out.println("selectIncreaseKeyword called!");
+        System.out.println("selectIncreaseKeyword : " + industryName + " | " + regMonth);
         return keywordService.selectIncreaseKeyword(new IncreaseKeywordDTO(industryName, regMonth));
     }
 
