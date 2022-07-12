@@ -43,7 +43,7 @@ public class KeywordController {
     // 월별 랭킹 키워드 리스트
     @GetMapping("/month-rank-keyword/{industryName}/{regMonth}")
     public List<MonthRankKeywordDTO> selectMonthRankKeyword(@PathVariable String industryName, @PathVariable String regMonth) {
-        System.out.println("selectMonthKeyword called!");
+        System.out.println("MonthRankKeyword : " + industryName + " | " + regMonth);
         return keywordService.selectMonthRankKeyword(new MonthRankKeywordDTO(industryName, regMonth));
     }
 
