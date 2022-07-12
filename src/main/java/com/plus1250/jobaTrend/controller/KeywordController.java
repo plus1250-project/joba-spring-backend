@@ -30,6 +30,7 @@ public class KeywordController {
     // 트렌드 키워드 리스트 (issueDate 로부터서 30일 전 데이터까지 가져와야 함)
     @GetMapping("/trend-keyword/{industryName}/{issueDate}")
     public List<TrendKeywordDTO> selectTrendKeyword(@PathVariable String industryName, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date issueDate) {
+        System.out.println("selectTrendKeyword : " + industryName + " | " + issueDate);
         return keywordService.selectTrendKeyword(new TrendKeywordDTO(industryName, issueDate));
     }
 
