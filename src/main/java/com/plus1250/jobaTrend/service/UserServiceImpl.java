@@ -25,23 +25,26 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private final PasswordEncoder passwordEncoder;
+
     @Autowired
     private final UserRepository userRepository;
+
     @Autowired
     private final RefreshTokenRepository refreshTokenRepository;
+
     @Autowired
     private final JwtTokenProvider jwtTokenProvider;
 
     // 회원가입
     @Transactional
     public void insertUser(UserDTO userDTO) {
-        User user = userRepository.findById(userDTO.getEmail()).orElse(null);
+        User user = userRepository.findByEmail(userDTO.getEmail()).orElse(null);
         if (user != null) throw new RuntimeException("이미 등록된 이메일입니다.");
 
         User saveUser = User.builder()
                 .password(passwordEncoder.encode(userDTO.getPassword()))
                 .email(userDTO.getEmail())
-                .nickName(user.getNickName())
+                .nickName(userDTO.getNickName())
                 .build();
 
         userRepository.save(saveUser);
@@ -50,9 +53,9 @@ public class UserServiceImpl implements UserService {
     // 회원 정보 조회
     @Transactional(readOnly = true)
     public UserDTO getInfo(String email) {
-        User user = userRepository.findByInfo(email).orElseThrow(() -> new RuntimeException("회원 정보가 존재하지 않습니다."));
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("회원 정보가 존재하지 않습니다."));
         return UserDTO.builder()
-                .idx(user.getIdx())
+                .userId(user.getUserId())
                 .email(user.getEmail())
                 .nickName(user.getNickName())
                 .build();
@@ -60,8 +63,8 @@ public class UserServiceImpl implements UserService {
 
     // 로그인
     @Transactional
-    public TokenDTO loginUser(@RequestBody UserDTO userDTO) {
-
+    public TokenDTO loginUser(UserDTO userDTO) {
+        System.out.println(userDTO.getEmail() + " : " + userDTO.getPassword());
         // AuthenticationToken 생성
         UsernamePasswordAuthenticationToken authenticationToken = userDTO.toAuthentication();
 
@@ -116,7 +119,7 @@ public class UserServiceImpl implements UserService {
     // 이메일 가입 여부 확인, 가입된 정보 있으면 이름 리턴
     @Override
     public boolean emailCheckUser(String email, String nickName) {
-        User user = userRepository.findUserByUserId(email);
+        User user = userRepository.findByUserId(email);
         if (user != null && user.getNickName().equals(nickName)) {
             return true;
         } else {

@@ -3,6 +3,7 @@ package com.plus1250.jobaTrend.security;
 import com.plus1250.jobaTrend.model.entity.User;
 import com.plus1250.jobaTrend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,6 +15,7 @@ import java.util.Collections;
 @Service
 public class CustomUserDetailService implements UserDetailsService {
 
+    @Autowired
     private final UserRepository userRepository;
 
     @Override

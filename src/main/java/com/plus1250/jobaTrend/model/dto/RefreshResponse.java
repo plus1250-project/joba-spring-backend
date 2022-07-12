@@ -11,13 +11,13 @@ import lombok.Setter;
 public class RefreshResponse {
 
     private String accessToken;
-    private String refreshToekn;
+    private String refreshToken;
 
     private String tokenType = "Bearer";
 
     @Builder
-    public RefreshResponse(String accessToken, String refreshToekn) {
+    public RefreshResponse(String accessToken, String refreshToken) {
         this.accessToken = accessToken;
-        this.refreshToekn = refreshToekn;
+        this.refreshToken = refreshToken;
     }
 }

@@ -11,11 +11,11 @@ public class TokenDTO {
 
     // private String grantType;
     private String accessToken;
-    private String refreshToekn;
+    private String refreshToken;
     private String tokenType = "Bearer";
     private Long accessTokenExpireDate;
 
     public String getRefreshToken() {
-        return refreshToekn;
+        return refreshToken;
     }
 }

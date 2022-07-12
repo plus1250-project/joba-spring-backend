@@ -7,26 +7,28 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+
 @Getter
 @Builder
 @AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
-    private int idx;
+    private int userId;
+
     @Column(nullable = false)
     private String password;
+
     @Column(nullable = false)
     private String email;
+
     @Column(nullable = false)
     private String nickName;
 
-    public String get(String email) {
-        return email;
-    }
 
     public void update(String password, String nickName) {
         this.password = password;

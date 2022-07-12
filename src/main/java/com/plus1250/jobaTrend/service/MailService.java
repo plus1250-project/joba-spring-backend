@@ -24,15 +24,16 @@ public class MailService {
         mailDTO.setAddress(email);
         mailDTO.setTitle("JOBA 임시 비밀번호 안내 메일입니다");
         mailDTO.setMessage("비밀번호는" + str +"입니다");
-        updatePassword(str, email);
+//        updatePassword(str, email);
 
         return mailDTO;
     }
-    public static void updatePassword(String str, String email){
-        String password = str;
-        int id = userRepository.findByEmail(email).get().getIdx();
-        userRepository.updateUserPassword(password);
-    }
+
+//    public static void updatePassword(String str, String email){
+//        String password = str;
+//        int id = userRepository.findByEmail(email).get().getUserId();
+//        userRepository.updateUserPassword(password);
+//    }
 
     // 10자리 랜덤난수 생성
     public static String getTempPassword(){

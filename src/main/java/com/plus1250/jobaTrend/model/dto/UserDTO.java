@@ -9,12 +9,18 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDTO {
-    private int idx;
+    private int userId;
     private String password;
     private String email;
     private String nickName;
     public UsernamePasswordAuthenticationToken toAuthentication() {
         return null;
+    }
+
+    public UserDTO(String password, String email, String nickName) {
+        this.password = password;
+        this.email = email;
+        this.nickName = nickName;
     }
 
     //public String getRefreshToken() {

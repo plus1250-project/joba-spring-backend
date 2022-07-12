@@ -1,5 +1,6 @@
 package com.plus1250.jobaTrend.service;
 
+import com.plus1250.jobaTrend.model.entity.RefreshToken;
 import com.plus1250.jobaTrend.repository.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,11 @@ public class RefreshTokenService {
         return refreshTokenRepository.existsByToken(token);
     }
 
-//    public RefreshToken addExpiredToken(String token) {
-//        RefreshToken saveToken = RefreshToken.builder()
-//                .token(token)
-//                .build();
-//        return refreshTokenRepository.save(saveToken);
-   // }
+    public RefreshToken addExpiredToken(String token) {
+        RefreshToken saveToken = RefreshToken.builder()
+                .token(token)
+                .build();
+        return refreshTokenRepository.save(saveToken);
+    }
 }
 

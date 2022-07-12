@@ -1,11 +1,15 @@
 package com.plus1250.jobaTrend.config;
 import com.plus1250.jobaTrend.jwt.JwtAuthenticationFilter;
 import com.plus1250.jobaTrend.jwt.JwtTokenProvider;
+import com.plus1250.jobaTrend.security.AuthenticationEntryPoint;
 import com.plus1250.jobaTrend.security.CustomAuthenticationFilter;
 import com.plus1250.jobaTrend.security.handler.AuthenticationFailureHandlerImpl;
 import com.plus1250.jobaTrend.security.handler.AuthenticationSuccessHandlerImpl;
 import com.plus1250.jobaTrend.security.handler.JwtAccessDeniedHandler;
+import lombok.EqualsAndHashCode;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.internal.build.AllowSysOut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,16 +20,20 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.AuthenticationEntryPoint;
+
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+
     private final JwtTokenProvider jwtTokenProvider;
 
     // 인증 실패,  인증 헤더 전달 실패
+
     private final AuthenticationEntryPoint authenticationEntryPoint;
 
     // 권한 실패
@@ -47,6 +55,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http    .cors()
