@@ -1,21 +1,19 @@
 package com.plus1250.jobaTrend.service;
 
+import com.plus1250.jobaTrend.model.dto.TokenDTO;
 import com.plus1250.jobaTrend.model.dto.UserDTO;
+import com.plus1250.jobaTrend.model.entity.User;
+import org.springframework.web.bind.annotation.RequestBody;
 
 public interface UserService {
 
-    // 회원가입
-    void insertUser(UserDTO email, UserDTO pw);
+    TokenDTO loginUser(@RequestBody UserDTO userDTO);
+
+    boolean emailCheckUser(String email, String nickName);
 
     // 회원 정보 수정
-    void updateUser(UserDTO userDTO);
+    String updateUser(User user) throws Exception;
 
-    // 회원탈퇴
-    void deleteUser(UserDTO userDTO);
-
-    // 로그인
-    Boolean loginUser(UserDTO userDTO);
-
-    // 회원가입
-    void insertUser(String email, String pw);
+    // 회원 탈퇴
+    void deleteUser(String password, String email) throws Exception;
 }
