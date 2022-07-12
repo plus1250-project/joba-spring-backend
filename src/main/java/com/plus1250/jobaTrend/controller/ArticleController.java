@@ -17,10 +17,11 @@ public class ArticleController {
     @Autowired
     private final ArticleService articleService;
 
-    // 뉴스 기사 컨트롤러 test
+    // 뉴스 기사 컨트롤러
     @GetMapping("/article")
-    public List<ArticleDTO> selectArticle(@RequestParam ArticleDTO articleDTO) {
-        System.out.println("controller : " + articleDTO);
-        return articleService.selectArticle(articleDTO);
+    public List<ArticleDTO> selectArticle(@RequestParam(value = "industryName") String industryName, @RequestParam(value = "issueDate") String issueDate) {
+        System.out.println("controller : " + industryName + "|" + issueDate);
+
+        return articleService.selectArticle(new ArticleDTO(industryName, issueDate));
     }
 }

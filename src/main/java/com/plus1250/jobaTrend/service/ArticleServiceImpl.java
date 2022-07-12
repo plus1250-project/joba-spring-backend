@@ -19,10 +19,11 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleDTO> selectArticle(ArticleDTO articleDTO) {
-        System.out.println("serviceImpl : " + articleDTO);
+        System.out.println("serviceImpl : " + articleDTO.getIndustryName());
 
         // DB
-        List<Article> articles = articleRepository.findByIndustryName(articleDTO.getIndustryName());
+        List<Article> articles = articleRepository.findByIndustryNameAndIssueDate(articleDTO.getIndustryName(), articleDTO.getIssueDate());
+        System.out.println(articles.get(0).getIssueDate());
 
         // list entity
         List<ArticleDTO> result = articles.stream().map(r -> new ArticleDTO(r)).collect(Collectors.toList());

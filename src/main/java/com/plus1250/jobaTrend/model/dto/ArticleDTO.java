@@ -6,6 +6,7 @@ import lombok.Getter;
 
 @Getter
 public class ArticleDTO {
+    private int articleId;
     private String industryName;
     private String articleUrl;
     private String issueDate;
@@ -14,11 +15,13 @@ public class ArticleDTO {
 
     public ArticleDTO() {}
 
-    public ArticleDTO(String industryName) {
+    public ArticleDTO(String industryName, String issueDate) {
         this.industryName = industryName;
+        this.issueDate = issueDate;
     }
 
     public ArticleDTO(Article r) {
+        this.articleId = r.getArticleId();
         this.industryName = r.getIndustryName();
         this.articleUrl = r.getArticleUrl();
         this.issueDate = r.getIssueDate();
@@ -27,7 +30,8 @@ public class ArticleDTO {
     }
 
     @Builder
-    public ArticleDTO(String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
+    public ArticleDTO(int articleId, String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
+        this.articleId = articleId;
         this.industryName = industryName;
         this.articleUrl = articleUrl;
         this.issueDate = issueDate;
