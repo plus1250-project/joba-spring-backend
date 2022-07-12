@@ -7,19 +7,20 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@IdClass(ArticleCompositeKey.class)
 @Table(name="indus_article_list")
 public class Article {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="article_id")
+    private int articleId;
+
     @Column(name="main_indus_name")
     private String industryName;
 
-    @Id
     @Column(name="url")
     private String articleUrl;
 
-    @Id
     @Column(name="issue_date")
     private String issueDate;
 
@@ -36,7 +37,8 @@ public class Article {
     }
 
     @Builder
-    public Article(String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
+    public Article(int articleId, String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
+        this.articleId = articleId;
         this.industryName = industryName;
         this.articleUrl = articleUrl;
         this.issueDate = issueDate;

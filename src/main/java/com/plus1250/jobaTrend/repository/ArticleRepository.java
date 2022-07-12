@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ArticleRepository extends JpaRepository<Article, String> {
 
-    List<Article> findByIndustryName(String industryName);
+    List<Article> findByIndustryNameAndIssueDate(String industryName, String issueDate);
 }
