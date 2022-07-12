@@ -52,7 +52,8 @@ public class KeywordServiceImpl implements KeywordService {
     // 월별 키워드 리스트
     @Override
     public List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO) {
-        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
+        String fromMonth = "2021-10";
+        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonthGreaterThanEqualAndRegMonthLessThanEqual(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), fromMonth, monthKeywordDTO.getRegMonth());
         List<MonthKeywordDTO> result = monthKeywords.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
 
         return result;

@@ -33,10 +33,10 @@ public class KeywordController {
         return keywordService.selectTrendKeyword(new TrendKeywordDTO(industryName, issueDate));
     }
 
-    // 월별 키워드 리스트
+    // 월별 키워드 리스트 (9개)
     @GetMapping("/month-keyword/{keyword}/{industryName}/{regMonth}")
     public List<MonthKeywordDTO> selectMonthKeyword(@PathVariable String keyword, @PathVariable String industryName, @PathVariable String regMonth) {
-        System.out.println("selectMonthKeyword called!");
+        System.out.println("monthKeyword chart data : " + keyword + " | " + industryName + " | " + regMonth);
         return keywordService.selectMonthKeyword(new MonthKeywordDTO(keyword, industryName, regMonth));
     }
 
