@@ -1,36 +1,36 @@
 package com.plus1250.jobaTrend.controller;
 
-import com.plus1250.jobaTrend.common.Data;
 import com.plus1250.jobaTrend.jwt.JwtTokenProvider;
 import com.plus1250.jobaTrend.model.dto.*;
-import com.plus1250.jobaTrend.model.entity.RefreshToken;
 import com.plus1250.jobaTrend.model.entity.User;
 import com.plus1250.jobaTrend.service.MailService;
 import com.plus1250.jobaTrend.service.RefreshTokenService;
 import com.plus1250.jobaTrend.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.Map;
 
 @CrossOrigin("*")
 @RestController
 @RequiredArgsConstructor
-public class UserContoller {
+@RequestMapping("/")
+public class UserController {
 
+    @Autowired
     private final UserServiceImpl userServiceImpl;
 
+    @Autowired
     private final JwtTokenProvider jwtTokenProvider;
 
+    @Autowired
     private final RefreshTokenService refreshTokenService;
 
     // 회원가입
@@ -50,7 +50,9 @@ public class UserContoller {
     // 로그인
     @PostMapping(value = "/login")
     public ResponseEntity<TokenDTO> loginUser(@RequestBody UserDTO userDTO) {
-        return ResponseEntity.ok(userServiceImpl.loginUser(userDTO));
+        System.out.println("login" + userDTO.getEmail());
+//        return ResponseEntity.ok(userServiceImpl.loginUser(userDTO));
+        return null;
     }
 
 //    public String loginUser(@RequestBody String UserDTO) {

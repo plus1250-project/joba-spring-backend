@@ -24,10 +24,14 @@ public class RefreshToken {
     @Column(name = "rt_value")
     private String value;
 
+    @Column(name = "token")
+    private String token;
+
     @Builder
-    public RefreshToken(String key, String value) {
+    public RefreshToken(String key, String value, String token) {
         this.key = key;
         this.value = value;
+        this.token = token;
     }
 
     public RefreshToken updateValue(String token) {

@@ -3,6 +3,7 @@ import com.plus1250.jobaTrend.model.dto.TokenDTO;
 import com.plus1250.jobaTrend.service.RefreshTokenService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -97,7 +98,7 @@ public final class JwtTokenProvider {
                 .tokenType(BEARER_TYPE)
                 .accessToken(accessToken)
                 .accessTokenExpireDate(accessTokenExpiresIn.getTime())
-                .refreshToekn(refreshToken)
+                .refreshToken(refreshToken)
                 .build();
     }
 
