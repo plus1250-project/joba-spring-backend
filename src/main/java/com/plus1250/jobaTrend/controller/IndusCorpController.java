@@ -18,10 +18,11 @@ public class IndusCorpController {
     private final IndusCorpService indusCorpService;
 
     // 산업군 기업 리스트
-    @GetMapping("/indus-corp")
-    public List<IndusCorpDTO> selectIndusCorp(@RequestParam String industryName, @RequestParam String regMonth) {
+    @GetMapping("/indus-corp/{industryName}/{regMonth}")
+    public List<IndusCorpDTO> selectIndusCorp(@PathVariable String industryName, @PathVariable String regMonth) {
+
+        System.out.println("indus-corp : " + industryName + " | " + regMonth);
 
         return indusCorpService.selectIndusCorp(new IndusCorpDTO(industryName, regMonth));
-
     }
 }
