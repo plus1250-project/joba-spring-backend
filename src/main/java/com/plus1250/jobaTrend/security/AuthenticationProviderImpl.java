@@ -1,5 +1,6 @@
 package com.plus1250.jobaTrend.security;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,7 +14,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class AuthenticationProviderImpl implements AuthenticationProvider {
 
+    @Autowired
     private final UserDetailsService userDetailsService;
+
+    @Autowired
     private final PasswordEncoder passwordEncoder;
 
 
@@ -26,8 +30,13 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
         // AuthenticaionFilter에서 생성된 토큰으로부터 이메일, 비밀번호 추출
         String username = token.getName();
         String password = (String) token.getCredentials();
+
+        System.out.println("인증 프로바이더 : " + username + " - " + password);
+
         // 해당 회원 Database 조회
         UserDetailsImpl userDetail = (UserDetailsImpl) userDetailsService.loadUserByUsername(username);
+
+        System.out.println("유저 정보 확인 완료 : " + userDetail.getUsername()); //이메일
 
         // 비밀번호 확인
         if (!passwordEncoder.matches(password, userDetail.getPassword()))

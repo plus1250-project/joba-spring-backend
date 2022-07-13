@@ -29,6 +29,8 @@ public class User {
     @Column(nullable = false)
     private String nickName;
 
+    public User() {}
+
 
     public void update(String password, String nickName) {
         this.password = password;

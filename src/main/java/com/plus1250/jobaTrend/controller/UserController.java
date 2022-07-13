@@ -5,6 +5,7 @@ import com.plus1250.jobaTrend.model.dto.*;
 import com.plus1250.jobaTrend.model.entity.User;
 import com.plus1250.jobaTrend.service.MailService;
 import com.plus1250.jobaTrend.service.RefreshTokenService;
+import com.plus1250.jobaTrend.service.UserService;
 import com.plus1250.jobaTrend.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private final UserServiceImpl userServiceImpl;
+    private final UserService userService;
 
     @Autowired
     private final JwtTokenProvider jwtTokenProvider;
@@ -36,23 +37,25 @@ public class UserController {
     // 회원가입
     @PostMapping(value = "/signup")
     public String insertUser(@RequestBody UserDTO userDTO) {
-        userServiceImpl.insertUser(userDTO);
+        userService.insertUser(userDTO);
         return "signup";
     }
 
     // 회원 정보 조회
     @GetMapping(value = "/userinfo")
     public UserDTO info(@PathVariable String email) {
-        UserDTO userDTO = userServiceImpl.getInfo(email);
+        UserDTO userDTO = userService.getInfo(email);
         return userDTO;
     }
 
     // 로그인
     @PostMapping(value = "/login")
-    public ResponseEntity<TokenDTO> loginUser(@RequestBody UserDTO userDTO) {
-        System.out.println("login" + userDTO.getEmail());
-//        return ResponseEntity.ok(userServiceImpl.loginUser(userDTO));
-        return null;
+    public String loginUser(@RequestBody UserDTO userDTO) {
+
+        ResponseEntity<TokenDTO> responseEntity = ResponseEntity.ok(userService.loginUser(userDTO));
+//        return ResponseEntity.ok(userService.loginUser(userDTO));
+        return responseEntity.getBody().getAccessToken();
+//        return null;
     }
 
 //    public String loginUser(@RequestBody String UserDTO) {
@@ -64,7 +67,7 @@ public class UserController {
     // 재발급
     @PostMapping("/reissue")
     public ResponseEntity<TokenDTO> reissue(@RequestBody RefreshRequest refreshRequest) {
-        return ResponseEntity.ok(userServiceImpl.reissue(refreshRequest));
+        return ResponseEntity.ok(userService.reissue(refreshRequest));
     }
 
     // 로그아웃
@@ -79,7 +82,7 @@ public class UserController {
     public @ResponseBody Map<String, Boolean> findpw(String email, String nickName) {
 
         Map<String,Boolean> json = new HashMap<>();
-        boolean pwFindCheck = userServiceImpl.emailCheckUser(email, nickName);
+        boolean pwFindCheck = userService.emailCheckUser(email, nickName);
 
         System.out.println(pwFindCheck);
         json.put("check", pwFindCheck);
@@ -97,13 +100,13 @@ public class UserController {
     // 회원 정보 수정
     @PostMapping("/update")
     public void updateUser(@RequestBody User user) throws Exception {
-        userServiceImpl.updateUser(user);
+        userService.updateUser(user);
     }
 
     // 회원탈퇴
     @PostMapping("/delete")
     public void deleteUser(@RequestBody String password, String email) throws Exception {
-        userServiceImpl.deleteUser(password, email);
+        userService.deleteUser(password, email);
     }
 
 }

@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService {
 
     // 회원가입
     @Transactional
+    @Override
     public void insertUser(UserDTO userDTO) {
         User user = userRepository.findByEmail(userDTO.getEmail()).orElse(null);
         if (user != null) throw new RuntimeException("이미 등록된 이메일입니다.");
@@ -52,6 +53,7 @@ public class UserServiceImpl implements UserService {
 
     // 회원 정보 조회
     @Transactional(readOnly = true)
+    @Override
     public UserDTO getInfo(String email) {
         User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("회원 정보가 존재하지 않습니다."));
         return UserDTO.builder()
@@ -63,6 +65,7 @@ public class UserServiceImpl implements UserService {
 
     // 로그인
     @Transactional
+    @Override
     public TokenDTO loginUser(UserDTO userDTO) {
         System.out.println(userDTO.getEmail() + " : " + userDTO.getPassword());
         // AuthenticationToken 생성
@@ -74,7 +77,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("잘못된 비밀번호입니다.");
         }
 
-        TokenDTO tokenDTO = jwtTokenProvider.crateToken(authenticationToken);
+        TokenDTO tokenDTO = jwtTokenProvider.createToken(authenticationToken);
 
         RefreshToken refreshToken = RefreshToken.builder()
                 .key(authenticationToken.getName())
@@ -87,6 +90,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
+    @Override
     public TokenDTO reissue(RefreshRequest refreshRequest) {
         // Refresh Token 검증
         if (!jwtTokenProvider.validateToken(refreshRequest.getRefreshToken())) {
@@ -106,7 +110,7 @@ public class UserServiceImpl implements UserService {
         }
 
         // 새로운 토큰 생성
-        TokenDTO tokenDTO = jwtTokenProvider.crateToken(authentication);
+        TokenDTO tokenDTO = jwtTokenProvider.createToken(authentication);
 
         // 정보 업데이트
         RefreshToken newRefreshToken = refreshToken.updateValue(tokenDTO.getRefreshToken());
