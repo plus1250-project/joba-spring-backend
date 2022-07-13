@@ -49,14 +49,14 @@ public class UserController {
     }
 
     // 로그인
-    @PostMapping(value = "/login")
-    public String loginUser(@RequestBody UserDTO userDTO) {
-
-        ResponseEntity<TokenDTO> responseEntity = ResponseEntity.ok(userService.loginUser(userDTO));
+//    @PostMapping(value = "/login")
+//    public ResponseEntity<TokenDTO> loginUser(@RequestBody UserDTO userDTO) {
+//
+////        ResponseEntity<TokenDTO> responseEntity = ResponseEntity.ok(userService.loginUser(userDTO));
 //        return ResponseEntity.ok(userService.loginUser(userDTO));
-        return responseEntity.getBody().getAccessToken();
-//        return null;
-    }
+////        return responseEntity.getBody().getAccessToken();
+////        return null;
+//    }
 
 //    public String loginUser(@RequestBody String UserDTO) {
 //        Map<String, String> result = new HashMap<>();
@@ -105,8 +105,10 @@ public class UserController {
 
     // 회원탈퇴
     @PostMapping("/delete")
-    public void deleteUser(@RequestBody String password, String email) throws Exception {
-        userService.deleteUser(password, email);
+    public void deleteUser(UserDTO userDTO) throws Exception {
+        System.out.println("delete controller");
+        System.out.println(userDTO.getEmail() + " | " + userDTO.getPassword());
+        userService.deleteUser(userDTO.getPassword(), userDTO.getEmail());
     }
 
 }
