@@ -144,9 +144,11 @@ public class UserServiceImpl implements UserService {
     // 회원 탈퇴
     @Override
     public void deleteUser(String password, String email) throws Exception {
+        System.out.println("delete serviceImpl");
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("가입되지 않은 이메일 입니다"));
 
-        if (!passwordEncoder.matches(password, String.valueOf(passwordEncoder))) {
+//        String.valueOf(passwordEncoder)
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new Exception("비밀번호가 맞지 않습니다.");
         }
         userRepository.delete(user);
