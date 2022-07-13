@@ -1,5 +1,6 @@
 package com.plus1250.jobaTrend.service;
 
+import com.plus1250.jobaTrend.model.dto.RefreshRequest;
 import com.plus1250.jobaTrend.model.dto.TokenDTO;
 import com.plus1250.jobaTrend.model.dto.UserDTO;
 import com.plus1250.jobaTrend.model.entity.User;
@@ -13,6 +14,12 @@ public interface UserService {
 
     // 회원 정보 수정
     String updateUser(User user) throws Exception;
+
+    UserDTO getInfo(String email);
+
+    void insertUser(UserDTO userDTO);
+
+    TokenDTO reissue(RefreshRequest refreshRequest);
 
     // 회원 탈퇴
     void deleteUser(String password, String email) throws Exception;

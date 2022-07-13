@@ -71,7 +71,7 @@ public final class JwtTokenProvider {
 
     // Jwt 토큰 생성
 
-    public TokenDTO crateToken(Authentication authentication) {
+    public TokenDTO createToken(Authentication authentication) {
         // 권한들 가져오기
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)

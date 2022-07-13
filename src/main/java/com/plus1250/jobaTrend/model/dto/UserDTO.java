@@ -23,6 +23,11 @@ public class UserDTO {
         this.nickName = nickName;
     }
 
+    public UserDTO(String password, String email) {
+        this.password = password;
+        this.email = email;
+    }
+
     //public String getRefreshToken() {
     //}
 }

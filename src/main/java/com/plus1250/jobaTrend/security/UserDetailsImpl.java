@@ -13,6 +13,7 @@ import java.util.Collection;
 @Getter
 @ToString
 public class UserDetailsImpl implements UserDetails {
+    // name 이랑 이메일 구분 어려움
     private final String password;
     private final String email;
     private final String name;
