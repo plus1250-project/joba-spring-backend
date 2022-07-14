@@ -53,7 +53,10 @@ public class KeywordServiceImpl implements KeywordService {
     @Override
     public List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO) {
         String fromMonth = "2021-10";
-        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonthGreaterThanEqualAndRegMonthLessThanEqual(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), fromMonth, monthKeywordDTO.getRegMonth());
+
+//        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonthBetween(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), "2021-10", monthKeywordDTO.getRegMonth());
+        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
+        System.out.println(monthKeywords);
         List<MonthKeywordDTO> result = monthKeywords.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
 
         return result;

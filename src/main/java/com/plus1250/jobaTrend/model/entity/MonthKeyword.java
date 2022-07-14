@@ -28,6 +28,12 @@ public class MonthKeyword {
 
     public MonthKeyword() {}
 
+    public MonthKeyword(String keyword, String industryName, String regMonth) {
+        this.keyword = keyword;
+        this.industryName = industryName;
+        this.regMonth = regMonth;
+    }
+
     @Builder
     public MonthKeyword(String keyword, String regMonth, String industryName, int keywordCnt) {
         this.keyword = keyword;

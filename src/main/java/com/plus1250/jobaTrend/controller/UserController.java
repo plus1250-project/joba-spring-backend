@@ -103,6 +103,12 @@ public class UserController {
         userService.updateUser(user);
     }
 
+//    // 닉네임 수정
+//    @PostMapping("/update/resetnickname")
+//    public void updateUserNickname(@RequestBody User user) throws Exception {
+//        userService.updateUserNickname(user);
+//    }
+
     // 회원탈퇴
     @PostMapping("/delete")
     public void deleteUser(UserDTO userDTO) throws Exception {

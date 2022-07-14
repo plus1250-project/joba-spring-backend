@@ -15,6 +15,8 @@ public interface UserService {
     // 회원 정보 수정
     String updateUser(User user) throws Exception;
 
+//    void updateUserNickname(User user);
+
     UserDTO getInfo(String email);
 
     void insertUser(UserDTO userDTO);

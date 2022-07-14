@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface MonthKeywordRepository extends JpaRepository<MonthKeyword, String> {
 
-    List<MonthKeyword> findByKeywordAndIndustryNameAndRegMonthGreaterThanEqualAndRegMonthLessThanEqual(String keyword, String industryName, String fromMonth , String regMonth);
+//    List<MonthKeyword> findByKeywordAndIndustryNameAndRegMonthGreaterThanEqualAndRegMonthLessThanEqual(String keyword, String industryName,String regMonth, String fromMonth);
+//List<MonthKeyword> findByKeywordAndIndustryNameAndRegMonthBetween(String keyword, String industryName, String fromMonth, String regMonth);
+    List<MonthKeyword> findByKeywordAndIndustryNameAndRegMonth(String keyword, String industryName, String regMonth);
 }
 
