@@ -12,10 +12,10 @@ public interface UserService {
 
     boolean emailCheckUser(String email, String nickName);
 
-    // 회원 정보 수정
-    String updateUser(User user) throws Exception;
+    //String updateUserPassword(String password) throws Exception;
 
-//    void updateUserNickname(User user);
+    //UserDTO updateUserNickname(String nickName) throws Exception;
+
 
     UserDTO getInfo(String email);
 
@@ -23,6 +23,13 @@ public interface UserService {
 
     TokenDTO reissue(RefreshRequest refreshRequest);
 
+    // 닉네임 수정
+    void updateUserNickname(UserDTO userDTO) throws Exception;
+
+    // 비밀번호 수정
+ //   void updateUserPassword(User user) throws Exception;
+
     // 회원 탈퇴
     void deleteUser(String password, String email) throws Exception;
+
 }

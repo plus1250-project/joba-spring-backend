@@ -1,5 +1,6 @@
 package com.plus1250.jobaTrend.repository;
 import com.plus1250.jobaTrend.model.entity.User;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -14,6 +15,12 @@ public interface UserRepository  extends JpaRepository<User, String> {
 
     User save(User saveUser);
     User findByUserId(String email);
+
+   // void updateUserNickname(String nickName);
+
+ //
+    //   void updateUserPassword(String password);
+
 //    Optional<User> updateUserPassword(String password);
 
 
