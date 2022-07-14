@@ -103,28 +103,13 @@ public class UserController {
         System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
         userService.updateUserNickname(userDTO);
     }
-    public String updateUserNickname(@RequestBody UserDTO userDTO, Model model) {
-        if(userDTO != null) {
-            model.addAttribute("user", userDTO.getNickName());
-            model.addAttribute("userDTO", userDTO);
-        }
-        return "/updatenickname";
-    }
 
     // 비밀번호 수정
- //   @PostMapping("/updatepassword")
- //   public void updateUserPassword(User user) throws Exception {
-  //      System.out.println(user.getPassword());
+    @PostMapping("/updatepassword")
+    public void updateUserPassword(@RequestBody UserDTO userDTO) throws Exception {
 
- //       userService.updateUserPassword(user);
-  //  }
-
-    // 닉네임 수정
-//    @PostMapping("/updatenickname")
-//    public void updateUserNickname(UserDTO userDTO) throws Exception {
-//        System.out.println(userDTO.getNickName());
-//        userService.updateUserNickname(userDTO.getNickName());
-//    }
+        userService.updateUserPassword(userDTO);
+    }
 
     // 회원탈퇴
     @PostMapping("/delete")

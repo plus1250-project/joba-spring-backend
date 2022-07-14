@@ -9,9 +9,7 @@ import com.plus1250.jobaTrend.repository.RefreshTokenRepository;
 import com.plus1250.jobaTrend.repository.UserRepository;
 import com.plus1250.jobaTrend.model.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -19,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 @Service
@@ -149,34 +146,30 @@ public class UserServiceImpl implements UserService {
                 .nickName(userDTO.getNickName())
                 .build();
 
-
         userRepository.save(saveUser);
 
-
-
-   //     userRepository.updateUserNickname(userSave.getNickName());
     }
-    //public ResponseEntity<String> (@RequestBody UserDTO userDTO) {
-
-  //  }
 
     // 비밀번호 수정
- //   @Override
- //   public void updateUserPassword(User user) throws Exception {
+    @Override
+    public void updateUserPassword(UserDTO userDTO) throws Exception {
 
-        //User userSave = userRepository.findByEmail(user.getEmail())
-        //        .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
+        User userSave = userRepository.findByEmail(userDTO.getEmail())
+                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
 
-  //      BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-   //     String pw = encoder.encode(user.getPassword());
- //       user.setPassword(pw);
+        String pw = encoder.encode(userDTO.getPassword());
 
-  //      System.out.println("비밀번호 변경 :" + user.getPassword());
-        // user.setPassword(passwordEncoder.encode(userSave.getPassword()));
-   //     userRepository.updateUserPassword(String.valueOf(user));
- //   }
+        User saveUser =  User.builder()
+                .userId(userSave.getUserId())
+                .email(userDTO.getEmail())
+                .password(pw)
+                .nickName(userSave.getNickName())
+                .build();
 
+        userRepository.save(saveUser);
+    }
 
     // 회원 탈퇴
     @Override

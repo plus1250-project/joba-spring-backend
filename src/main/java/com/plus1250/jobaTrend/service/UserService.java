@@ -27,9 +27,8 @@ public interface UserService {
     void updateUserNickname(UserDTO userDTO) throws Exception;
 
     // 비밀번호 수정
- //   void updateUserPassword(User user) throws Exception;
+    void updateUserPassword(UserDTO userDTO) throws Exception;
 
     // 회원 탈퇴
     void deleteUser(String password, String email) throws Exception;
-
 }

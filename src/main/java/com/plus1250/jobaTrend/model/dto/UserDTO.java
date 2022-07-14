@@ -19,8 +19,6 @@ public class UserDTO {
     }
 
 
-
-
     public UserDTO(String password, String email, String nickName) {
         this.password = password;
         this.email = email;
