@@ -2,17 +2,14 @@ package com.plus1250.jobaTrend.controller;
 
 import com.plus1250.jobaTrend.jwt.JwtTokenProvider;
 import com.plus1250.jobaTrend.model.dto.*;
-import com.plus1250.jobaTrend.model.entity.User;
 import com.plus1250.jobaTrend.service.MailService;
 import com.plus1250.jobaTrend.service.RefreshTokenService;
 import com.plus1250.jobaTrend.service.UserService;
-import com.plus1250.jobaTrend.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -77,37 +74,38 @@ public class UserController {
         return "redirect:/login";
     }
 
-    // 비밀 번호 찾기
-    @GetMapping("/check/finpw")
-    public @ResponseBody Map<String, Boolean> findpw(String email, String nickName) {
+    // 이메일과 닉네임 일치 여부 확인
+    @GetMapping("/finpw")
+    public @ResponseBody Map<String, Boolean> findPassword(String email, String nickName) {
 
         Map<String,Boolean> json = new HashMap<>();
-        boolean pwFindCheck = userService.emailCheckUser(email, nickName);
+        boolean findCheck = userService.emailCheckNickname(email, nickName);
 
-        System.out.println(pwFindCheck);
-        json.put("check", pwFindCheck);
+        System.out.println(findCheck);
+        json.put("check", findCheck);
         return json;
     }
 
-    // 등록된 이메일로 임시비밀번호를 발송하고 발송된 임시비밀번호로 pw 변경
-    @PostMapping("/check/findpw/sendemail")
-    public @ResponseBody void sendEmail(String email) {
-        MailDTO mailDTO = MailService.createMailChagePw(email);
-        MailService.mailSend(mailDTO);
+    // 비밀번호 찾기
+    @PostMapping("sendemail")
+    public @ResponseBody void sendEmail(UserDTO userDTO) {
+        System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
 
+        MailDTO mailDTO = MailService.createChagePassword(userDTO.getEmail(), userDTO.getNickName());
+        MailService.mailSend(mailDTO);
     }
 
-    // 닉네임 수정
+
+    // 닉네임 변경
     @PostMapping("/updatenickname")
     public void updateUserNickname(@RequestBody UserDTO userDTO) throws Exception {
         System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
         userService.updateUserNickname(userDTO);
     }
 
-    // 비밀번호 수정
+    // 비밀번호 변경
     @PostMapping("/updatepassword")
     public void updateUserPassword(@RequestBody UserDTO userDTO) throws Exception {
-
         userService.updateUserPassword(userDTO);
     }
 
