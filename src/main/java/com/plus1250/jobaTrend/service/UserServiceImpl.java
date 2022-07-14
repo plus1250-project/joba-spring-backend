@@ -140,6 +140,15 @@ public class UserServiceImpl implements UserService {
         return userEntity.getEmail();
     }
 
+//    // 닉네임 수정
+//    @Transactional
+//    public void updateUserNickname(User user) throws Exception {
+//        User userEntity = userRepository.findById(user.getEmail())
+//                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
+//        userEntity.update(passwordEncoder.encode(user.getPassword()), user.getNickName());
+//        return userEntity.getEmail();
+//    }
+
 
     // 회원 탈퇴
     @Override
