@@ -122,7 +122,7 @@ public class UserServiceImpl implements UserService {
 
     // 이메일 가입 여부 확인, 가입된 정보 있으면 이름 리턴
     @Override
-    public boolean emailCheckUser(String email, String nickName) {
+    public boolean emailCheckNickname(String email, String nickName) {
         User user = userRepository.findByUserId(email);
         if (user != null && user.getNickName().equals(nickName)) {
             return true;
@@ -131,7 +131,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    // 닉네임 수정
+    // 닉네임 변경
     @Override
     public void updateUserNickname(UserDTO userDTO) throws Exception {
         System.out.println(userDTO.getNickName());
@@ -150,7 +150,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
-    // 비밀번호 수정
+    // 비밀번호 변경
     @Override
     public void updateUserPassword(UserDTO userDTO) throws Exception {
 

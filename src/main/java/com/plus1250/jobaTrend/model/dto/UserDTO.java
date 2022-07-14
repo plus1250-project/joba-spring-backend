@@ -18,7 +18,6 @@ public class UserDTO {
         return null;
     }
 
-
     public UserDTO(String password, String email, String nickName) {
         this.password = password;
         this.email = email;
