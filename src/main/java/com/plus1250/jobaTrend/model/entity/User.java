@@ -3,12 +3,14 @@ import com.plus1250.jobaTrend.model.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @Entity
@@ -31,9 +33,7 @@ public class User {
 
     public User() {}
 
-
-    public void update(String password, String nickName) {
-        this.password = password;
+    public User(String nickName) {
         this.nickName = nickName;
     }
 
@@ -41,4 +41,5 @@ public class User {
     public Authentication getUsername() {
         return null;
     }
+
 }

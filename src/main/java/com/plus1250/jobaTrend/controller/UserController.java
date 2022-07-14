@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
@@ -97,16 +97,33 @@ public class UserController {
 
     }
 
-    // 회원 정보 수정
-    @PostMapping("/update")
-    public void updateUser(@RequestBody User user) throws Exception {
-        userService.updateUser(user);
+    // 닉네임 수정
+    @PostMapping("/updatenickname")
+    public void updateUserNickname(@RequestBody UserDTO userDTO) throws Exception {
+        System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
+        userService.updateUserNickname(userDTO);
+    }
+    public String updateUserNickname(@RequestBody UserDTO userDTO, Model model) {
+        if(userDTO != null) {
+            model.addAttribute("user", userDTO.getNickName());
+            model.addAttribute("userDTO", userDTO);
+        }
+        return "/updatenickname";
     }
 
-//    // 닉네임 수정
-//    @PostMapping("/update/resetnickname")
-//    public void updateUserNickname(@RequestBody User user) throws Exception {
-//        userService.updateUserNickname(user);
+    // 비밀번호 수정
+ //   @PostMapping("/updatepassword")
+ //   public void updateUserPassword(User user) throws Exception {
+  //      System.out.println(user.getPassword());
+
+ //       userService.updateUserPassword(user);
+  //  }
+
+    // 닉네임 수정
+//    @PostMapping("/updatenickname")
+//    public void updateUserNickname(UserDTO userDTO) throws Exception {
+//        System.out.println(userDTO.getNickName());
+//        userService.updateUserNickname(userDTO.getNickName());
 //    }
 
     // 회원탈퇴

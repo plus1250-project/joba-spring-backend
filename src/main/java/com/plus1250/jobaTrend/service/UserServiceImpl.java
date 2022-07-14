@@ -9,10 +9,13 @@ import com.plus1250.jobaTrend.repository.RefreshTokenRepository;
 import com.plus1250.jobaTrend.repository.UserRepository;
 import com.plus1250.jobaTrend.model.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -131,23 +134,48 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    // 회원 정보 수정
-    @Transactional
-    public String updateUser(User user) throws Exception {
-        User userEntity = userRepository.findById(user.getEmail())
-                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
-        userEntity.update(passwordEncoder.encode(user.getPassword()), user.getNickName());
-        return userEntity.getEmail();
-    }
+    // 닉네임 수정
+    @Override
+    public void updateUserNickname(UserDTO userDTO) throws Exception {
+        System.out.println(userDTO.getNickName());
 
-//    // 닉네임 수정
-//    @Transactional
-//    public void updateUserNickname(User user) throws Exception {
-//        User userEntity = userRepository.findById(user.getEmail())
-//                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
-//        userEntity.update(passwordEncoder.encode(user.getPassword()), user.getNickName());
-//        return userEntity.getEmail();
-//    }
+        User userSave = userRepository.findByEmail(userDTO.getEmail())
+                .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
+
+        User saveUser =  User.builder()
+                .userId(userSave.getUserId())
+                .email(userDTO.getEmail())
+                .password(userSave.getPassword())
+                .nickName(userDTO.getNickName())
+                .build();
+
+
+        userRepository.save(saveUser);
+
+
+
+   //     userRepository.updateUserNickname(userSave.getNickName());
+    }
+    //public ResponseEntity<String> (@RequestBody UserDTO userDTO) {
+
+  //  }
+
+    // 비밀번호 수정
+ //   @Override
+ //   public void updateUserPassword(User user) throws Exception {
+
+        //User userSave = userRepository.findByEmail(user.getEmail())
+        //        .orElseThrow(() -> new RuntimeException("로그인 유저 정보가 없습니다."));
+
+  //      BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+   //     String pw = encoder.encode(user.getPassword());
+ //       user.setPassword(pw);
+
+  //      System.out.println("비밀번호 변경 :" + user.getPassword());
+        // user.setPassword(passwordEncoder.encode(userSave.getPassword()));
+   //     userRepository.updateUserPassword(String.valueOf(user));
+ //   }
 
 
     // 회원 탈퇴

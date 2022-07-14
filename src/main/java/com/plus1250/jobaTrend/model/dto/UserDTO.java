@@ -13,9 +13,13 @@ public class UserDTO {
     private String password;
     private String email;
     private String nickName;
+
     public UsernamePasswordAuthenticationToken toAuthentication() {
         return null;
     }
+
+
+
 
     public UserDTO(String password, String email, String nickName) {
         this.password = password;
@@ -28,6 +32,4 @@ public class UserDTO {
         this.email = email;
     }
 
-    //public String getRefreshToken() {
-    //}
 }
