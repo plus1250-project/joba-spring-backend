@@ -11,22 +11,21 @@ import javax.persistence.*;
 public class Article {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="article_id")
     private int articleId;
-
-    @Column(name="main_indus_name")
-    private String industryName;
-
-    @Column(name="url")
-    private String articleUrl;
-
-    @Column(name="issue_date")
-    private String issueDate;
 
     @Column(name="article_title")
     private String articleTitle;
 
+    @Column(name="url")
+    private String articleUrl;
+
+    @Column(name="main_indus_name")
+    private String industryName;
+
+    @Column(name="issue_date")
+    private String issueDate;
+    
     @Column(name="press")
     private String press;
 
