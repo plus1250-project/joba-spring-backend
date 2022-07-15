@@ -5,6 +5,6 @@ import java.util.Date;
 
 public class TrendKeywordCompositeKey implements Serializable {
     private String industryName;
-    private Date issueDate;
+    private Date fromDate;
     private String keyword;
 }

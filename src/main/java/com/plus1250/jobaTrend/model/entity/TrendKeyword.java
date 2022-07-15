@@ -13,12 +13,12 @@ import java.util.Date;
 public class TrendKeyword {
 
     @Id
-    @Column(name="main_indus_name")
+    @Column(name="industry_name")
     private String industryName;
 
     @Id
-    @Column(name="issue_date")
-    private Date issueDate;
+    @Column(name="from_date")
+    private Date fromDate;
 
     @Id
     @Column(name="keyword")
@@ -35,9 +35,9 @@ public class TrendKeyword {
     public TrendKeyword(String industryName) {}
 
     @Builder
-    public TrendKeyword(String industryName, Date issueDate, String keyword, int keywordCnt, int trendRank) {
+    public TrendKeyword(String industryName, Date fromDate, String keyword, int keywordCnt, int trendRank) {
         this.industryName = industryName;
-        this.issueDate = issueDate;
+        this.fromDate = fromDate;
         this.keyword = keyword;
         this.keywordCnt = keywordCnt;
         this.trendRank = trendRank;

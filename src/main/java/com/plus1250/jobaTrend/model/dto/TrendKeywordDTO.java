@@ -9,30 +9,30 @@ import java.util.Date;
 @Getter
 public class TrendKeywordDTO {
     private String industryName;
-    private Date issueDate;
+    private Date fromDate;
     private String keyword;
     private int keywordCnt;
     private int trendRank;
 
     public TrendKeywordDTO() {}
 
-    public TrendKeywordDTO(String industryName, Date issueDate) {
+    public TrendKeywordDTO(String industryName, Date fromDate) {
         this.industryName = industryName;
-        this.issueDate = issueDate;
+        this.fromDate = fromDate;
     }
 
     public TrendKeywordDTO(TrendKeyword r) {
         this.industryName = r.getIndustryName();
-        this.issueDate = r.getIssueDate();
+        this.fromDate = r.getFromDate();
         this.keyword = r.getKeyword();
         this.keywordCnt = r.getKeywordCnt();
         this.trendRank = r.getTrendRank();
     }
 
     @Builder
-    public TrendKeywordDTO(String industryName, Date issueDate, String keyword, int keywordCnt, int trendRank) {
+    public TrendKeywordDTO(String industryName, Date fromDate, String keyword, int keywordCnt, int trendRank) {
         this.industryName = industryName;
-        this.issueDate = issueDate;
+        this.fromDate = fromDate;
         this.keyword = keyword;
         this.keywordCnt = keywordCnt;
         this.trendRank = trendRank;

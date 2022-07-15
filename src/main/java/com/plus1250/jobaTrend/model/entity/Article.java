@@ -7,25 +7,25 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@Table(name="indus_article_list")
+@Table(name="industry_article_list")
 public class Article {
 
     @Id
     @Column(name="article_id")
     private int articleId;
 
-    @Column(name="article_title")
-    private String articleTitle;
+    @Column(name="industry_name")
+    private String industryName;
 
     @Column(name="url")
     private String articleUrl;
 
-    @Column(name="main_indus_name")
-    private String industryName;
-
     @Column(name="issue_date")
     private String issueDate;
-    
+
+    @Column(name="article_title")
+    private String articleTitle;
+
     @Column(name="press")
     private String press;
 
