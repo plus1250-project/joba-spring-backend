@@ -1,6 +1,6 @@
 package com.plus1250.jobaTrend.model.entity;
 
-import com.sun.xml.internal.ws.developer.UsesJAXBContext;
+
 import lombok.Getter;
 
 import javax.persistence.*;

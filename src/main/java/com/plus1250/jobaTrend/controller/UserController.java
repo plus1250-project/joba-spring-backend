@@ -26,6 +26,9 @@ public class UserController {
     private final UserService userService;
 
     @Autowired
+    private final MailService mailService;
+
+    @Autowired
     private final JwtTokenProvider jwtTokenProvider;
 
     @Autowired
@@ -88,11 +91,11 @@ public class UserController {
 
     // 비밀번호 찾기
     @PostMapping("sendemail")
-    public @ResponseBody void sendEmail(UserDTO userDTO) {
+    public @ResponseBody void sendEmail(@RequestBody UserDTO userDTO) {
         System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
 
-        MailDTO mailDTO = MailService.createChagePassword(userDTO.getEmail(), userDTO.getNickName());
-        MailService.mailSend(mailDTO);
+        MailDTO mailDTO = mailService.createChangePassword(userDTO);
+        mailService.mailSend(mailDTO);
     }
 
 

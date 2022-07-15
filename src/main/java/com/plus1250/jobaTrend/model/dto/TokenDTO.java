@@ -12,6 +12,8 @@ public class TokenDTO {
     // private String grantType;
     private String accessToken;
     private String refreshToken;
+
+    @Builder.Default
     private String tokenType = "Bearer";
     private Long accessTokenExpireDate;
 

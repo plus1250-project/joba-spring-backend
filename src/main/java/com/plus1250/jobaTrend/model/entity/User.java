@@ -31,8 +31,12 @@ public class User {
 
     public User() {}
 
-    public User(String nickName) {
-        this.nickName = nickName;
+//    public User(String nickName) {
+//        this.nickName = nickName;
+//    }
+
+    public User(String email) {
+        this.email = email;
     }
 
     // 의심스러움..
