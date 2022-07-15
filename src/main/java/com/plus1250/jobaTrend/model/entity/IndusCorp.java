@@ -8,11 +8,11 @@ import javax.persistence.*;
 @Entity
 @Getter
 @IdClass(IndusCorpCompositeKey.class)
-@Table(name="indus_corp_list")
+@Table(name="industry_corp_list")
 public class IndusCorp {
 
     @Id
-    @Column(name="main_indus_name")
+    @Column(name="industry_name")
     private String industryName;
 
     @Id

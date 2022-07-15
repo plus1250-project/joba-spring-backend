@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class MonthRankKeyword {
 
     @Id
-    @Column(name="main_indus_name")
+    @Column(name="industry_name")
     private String industryName;
 
     @Id

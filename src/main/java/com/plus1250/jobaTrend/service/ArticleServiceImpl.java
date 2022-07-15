@@ -23,7 +23,7 @@ public class ArticleServiceImpl implements ArticleService {
 
         // DB
         List<Article> articles = articleRepository.findByIndustryNameAndIssueDate(articleDTO.getIndustryName(), articleDTO.getIssueDate());
-        System.out.println(articles.get(0).getIssueDate());
+//        System.out.println(articles.get(0).getIssueDate());
 
         // list entity
         List<ArticleDTO> result = articles.stream().map(r -> new ArticleDTO(r)).collect(Collectors.toList());

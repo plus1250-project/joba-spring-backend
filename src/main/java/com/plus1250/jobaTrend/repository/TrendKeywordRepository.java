@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface TrendKeywordRepository extends JpaRepository<TrendKeyword, String> {
 
-    List<TrendKeyword> findByIndustryNameAndIssueDate(String industryName, Date issueDate);
+    List<TrendKeyword> findByIndustryNameAndFromDate(String industryName, Date fromDate);
 }

@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class CompareKeyword {
 
     @Id
-    @Column(name="main_indus_name")
+    @Column(name="industry_name")
     private String industryName;
 
     @Id
@@ -25,8 +25,8 @@ public class CompareKeyword {
     @Column(name="increment")
     private int increment;
 
-    @Column(name="fluct_rank")
-    private int fluctRank;
+    @Column(name="change_rank")
+    private int changeRank;
 
     public CompareKeyword() {}
 
@@ -34,11 +34,11 @@ public class CompareKeyword {
         this.industryName = industryName;
     }
 
-    public CompareKeyword(String industryName, String regMonth, String keyword, int increment, int fluctRank) {
+    public CompareKeyword(String industryName, String regMonth, String keyword, int increment, int changeRank) {
         this.industryName = industryName;
         this.regMonth = regMonth;
         this.keyword = keyword;
         this.increment = increment;
-        this.fluctRank = fluctRank;
+        this.changeRank = changeRank;
     }
 }
