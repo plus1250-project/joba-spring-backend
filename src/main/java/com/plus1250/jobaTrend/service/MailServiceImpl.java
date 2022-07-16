@@ -19,7 +19,7 @@ public class MailServiceImpl implements MailService{
     @Autowired
     private final UserRepository userRepository;
 
-
+    @Autowired
     private final JavaMailSender javaMailSender;
 
     private static final String FROM_ADDRESS = "ekthfdh@gmail.com";
@@ -84,7 +84,6 @@ public class MailServiceImpl implements MailService{
     }
 
     // STMP
-    @Bean
     @Override
     public void mailSend(MailDTO mailDTO) {
         System.out.println("전송 완료!");
