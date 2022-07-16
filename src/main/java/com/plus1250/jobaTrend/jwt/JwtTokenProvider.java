@@ -25,12 +25,13 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public final class JwtTokenProvider {
 
+    @Autowired
     private final UserDetailsService userDetailsService;
 
+    @Autowired
     private final RefreshTokenService refreshTokenService;
 
     // secret key
-    @Autowired
     @Value("${jwt.secret-key}")
     private String secretKey;
 
