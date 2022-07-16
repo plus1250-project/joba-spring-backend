@@ -18,7 +18,6 @@ public class MailServiceImpl implements MailService{
     @Autowired
     private final UserRepository userRepository;
 
-    @Autowired
     private final JavaMailSender javaMailSender;
 
     private static final String FROM_ADDRESS = "ekthfdh@gmail.com";
