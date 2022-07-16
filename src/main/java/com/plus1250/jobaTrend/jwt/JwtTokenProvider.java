@@ -30,6 +30,7 @@ public final class JwtTokenProvider {
     private final RefreshTokenService refreshTokenService;
 
     // secret key
+    @Autowired
     @Value("${jwt.secret-key}")
     private String secretKey;
 
