@@ -6,6 +6,7 @@ import com.plus1250.jobaTrend.model.entity.User;
 import com.plus1250.jobaTrend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,7 @@ public class MailServiceImpl implements MailService{
 
     @Autowired
     private final UserRepository userRepository;
+
 
     private final JavaMailSender javaMailSender;
 
@@ -82,6 +84,7 @@ public class MailServiceImpl implements MailService{
     }
 
     // STMP
+    @Bean
     @Override
     public void mailSend(MailDTO mailDTO) {
         System.out.println("전송 완료!");
