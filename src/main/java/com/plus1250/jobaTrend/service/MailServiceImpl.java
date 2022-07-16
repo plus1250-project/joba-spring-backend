@@ -6,6 +6,7 @@ import com.plus1250.jobaTrend.model.entity.User;
 import com.plus1250.jobaTrend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,10 +20,10 @@ public class MailServiceImpl implements MailService{
     @Autowired
     private final UserRepository userRepository;
 
-    @Autowired
     private final JavaMailSender javaMailSender;
 
-    private static final String FROM_ADDRESS = "ekthfdh@gmail.com";
+    @Value("${spring.mail.username}")
+    private String FROM_ADDRESS;
 
     // 메일 내용 생성, 임시 비빌번호 변경
     @Override
