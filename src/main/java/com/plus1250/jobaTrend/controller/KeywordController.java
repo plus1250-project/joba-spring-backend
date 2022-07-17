@@ -29,16 +29,16 @@ public class KeywordController {
 
     // 트렌드 키워드 리스트 (issueDate 로부터서 30일 전 데이터까지 가져와야 함)
     @GetMapping("/trend-keyword/{industryName}/{fromDate}")
-    public List<TrendKeywordDTO> selectTrendKeyword(@PathVariable String industryName, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fromDate) {
+        public List<TrendKeywordDTO> selectTrendKeyword(@PathVariable String industryName, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date fromDate) {
         System.out.println("selectTrendKeyword : " + industryName + " | " + fromDate);
         return keywordService.selectTrendKeyword(new TrendKeywordDTO(industryName, fromDate));
     }
 
-    // 월별 키워드 리스트 (9개)
-    @GetMapping("/month-keyword/{keyword}/{industryName}/{regMonth}")
-    public List<MonthKeywordDTO> selectMonthKeyword(@PathVariable String keyword, @PathVariable String industryName, @PathVariable String regMonth) {
-        System.out.println("monthKeyword chart data : " + keyword + " | " + industryName + " | " + regMonth);
-        return keywordService.selectMonthKeyword(new MonthKeywordDTO(keyword, industryName, regMonth));
+    // 월별 키워드 리스트 (9개) inputDate 당일 적재 데이터
+    @GetMapping("/month-keyword/{keyword}/{industryName}/{inputDate}")
+    public List<MonthKeywordDTO> selectMonthKeyword(@PathVariable String keyword, @PathVariable String industryName, @PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") Date inputDate) {
+        System.out.println("monthKeyword chart data : " + keyword + " | " + industryName + " | " + inputDate);
+        return keywordService.selectMonthKeyword(new MonthKeywordDTO(keyword, industryName, inputDate));
     }
 
     // 월별 랭킹 키워드 리스트

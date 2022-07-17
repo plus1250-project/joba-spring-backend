@@ -16,10 +16,10 @@ public class MonthKeywordDTO {
 
     public MonthKeywordDTO() {}
 
-    public MonthKeywordDTO(String keyword, String regMonth, String industryName) {
+    public MonthKeywordDTO(String keyword, String industryName, Date inputDate) {
         this.keyword = keyword;
-        this.regMonth = regMonth;
         this.industryName = industryName;
+        this.inputDate = inputDate;
     }
 
     public MonthKeywordDTO(MonthKeyword r) {

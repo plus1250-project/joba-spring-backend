@@ -32,10 +32,10 @@ public class MonthKeyword {
 
     public MonthKeyword() {}
 
-    public MonthKeyword(String keyword, String industryName, String regMonth) {
+    public MonthKeyword(String keyword, String industryName, Date inputDate) {
         this.keyword = keyword;
         this.industryName = industryName;
-        this.regMonth = regMonth;
+        this.inputDate = inputDate;
     }
 
     @Builder

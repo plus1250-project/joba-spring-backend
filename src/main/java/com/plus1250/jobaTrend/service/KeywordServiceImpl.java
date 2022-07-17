@@ -43,7 +43,9 @@ public class KeywordServiceImpl implements KeywordService {
     // 트렌드 키워드 리스트
     @Override
     public List<TrendKeywordDTO> selectTrendKeyword(TrendKeywordDTO trendKeywordDTO) {
+        System.out.println(trendKeywordDTO.getFromDate());
         List<TrendKeyword> trendKeywords = trendKeywordRepository.findByIndustryNameAndFromDate(trendKeywordDTO.getIndustryName(), trendKeywordDTO.getFromDate());
+        System.out.println(trendKeywords.size());
         List<TrendKeywordDTO> result = trendKeywords.stream().map(r-> new TrendKeywordDTO(r)).collect(Collectors.toList());
 
         return result;
@@ -54,8 +56,9 @@ public class KeywordServiceImpl implements KeywordService {
     public List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO) {
         String fromMonth = "2021-10";
 
-//        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonthBetween(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), "2021-10", monthKeywordDTO.getRegMonth());
-        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
+        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndInputDate(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getInputDate());
+//        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
+//                List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonthBetween(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), "2021-10", monthKeywordDTO.getRegMonth());
         System.out.println(monthKeywords);
         List<MonthKeywordDTO> result = monthKeywords.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
 

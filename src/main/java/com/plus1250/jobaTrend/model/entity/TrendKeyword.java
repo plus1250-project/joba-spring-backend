@@ -32,7 +32,10 @@ public class TrendKeyword {
 
     public TrendKeyword() {}
 
-    public TrendKeyword(String industryName) {}
+    public TrendKeyword(String industryName, Date fromDate) {
+        this.industryName = industryName;
+        this.fromDate = fromDate;
+    }
 
     @Builder
     public TrendKeyword(String industryName, Date fromDate, String keyword, int keywordCnt, int trendRank) {
