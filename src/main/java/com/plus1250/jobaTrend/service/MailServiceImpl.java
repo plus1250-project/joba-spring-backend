@@ -20,6 +20,7 @@ public class MailServiceImpl implements MailService{
     @Autowired
     private final UserRepository userRepository;
 
+    @Autowired
     private final JavaMailSender javaMailSender;
 
     @Value("${spring.mail.username}")
@@ -86,7 +87,6 @@ public class MailServiceImpl implements MailService{
 
     // STMP
     @Override
-    @Autowired
     public void mailSend(MailDTO mailDTO) {
         System.out.println("전송 완료!");
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
