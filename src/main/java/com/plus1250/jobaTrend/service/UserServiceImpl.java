@@ -37,6 +37,19 @@ public class UserServiceImpl implements UserService {
         userRepository.save(saveUser);
     }
 
+    @Override
+    public String validateEmail(UserDTO userDTO) {
+
+        User user = userRepository.findByEmail(userDTO.getEmail()).orElse(null);
+
+        if(userDTO.getEmail().equals(user.getEmail())) {
+            return "false";
+        } else {
+            return "true";
+        }
+
+    }
+
     // 회원 정보 조회
     @Transactional(readOnly = true)
     @Override

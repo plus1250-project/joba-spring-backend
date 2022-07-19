@@ -10,6 +10,9 @@ public interface UserService {
 
     void insertUser(UserDTO userDTO);
 
+    // 이메일 중복 확인
+    String validateEmail(UserDTO userDTO);
+
     // 닉네임 변경
     void updateUserNickname(UserDTO userDTO) throws Exception;
 

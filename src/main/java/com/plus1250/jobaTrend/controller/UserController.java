@@ -31,6 +31,13 @@ public class UserController {
         return "success";
     }
 
+    // 이메일 중복 확인
+    @PostMapping(value = "/validate")
+    public String validateEmail(@RequestBody UserDTO userDTO) {
+
+        return userService.validateEmail(userDTO);
+    }
+
     // 회원 정보 조회
     @GetMapping
     public UserDTO info(@RequestParam String email) {
