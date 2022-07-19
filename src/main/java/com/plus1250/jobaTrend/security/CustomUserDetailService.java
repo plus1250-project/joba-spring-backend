@@ -17,7 +17,6 @@ import java.util.Collections;
 @RequiredArgsConstructor
 @Service
 public class CustomUserDetailService implements UserDetailsService {
-
     @Autowired
     private final UserRepository userRepository;
 
@@ -30,9 +29,7 @@ public class CustomUserDetailService implements UserDetailsService {
         } else {
             System.out.println(email);
         }
-
         User user = userRepository.findByEmail(email).orElseThrow(() -> new BadCredentialsException("잘못된 이메일"));
-//        User user = userRepository.findByEmail(email).orElseThrow(() ->  new AuthenticationServiceException("이메일 확인"));
         System.out.println("사용자 확인 : " + user.getEmail() + " | " + user.getNickName());
         return new UserDetailsImpl(
                 user.getPassword(),
@@ -41,5 +38,4 @@ public class CustomUserDetailService implements UserDetailsService {
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"))
         );
     }
-
 }

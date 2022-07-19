@@ -12,7 +12,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 // JwtTokenProvider와 JwtAuthenticationFilter를 SecurityConfig에 적용
 public class JwtSecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
-
     private final JwtTokenProvider jwtTokenProvider;
 
     // Security 로직에 필터를 등록

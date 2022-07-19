@@ -10,7 +10,6 @@ import java.io.IOException;
 
 @Component
 public class AuthenticationEntryPoint implements org.springframework.security.web.AuthenticationEntryPoint {
-
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
         // user 정보 없이 접근 할 때 401

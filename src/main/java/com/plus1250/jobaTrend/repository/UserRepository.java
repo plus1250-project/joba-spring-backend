@@ -6,11 +6,7 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, String> {
     Optional<User> findByEmail(String email);
-
-
     User save(User saveUser);
 
     User findByUserId(String email);
-
-    //void updateMailPassword(int userId, String pw);
 }

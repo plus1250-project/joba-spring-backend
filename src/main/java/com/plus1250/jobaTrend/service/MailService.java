@@ -12,15 +12,9 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
-
-
 public interface MailService {
-
     MailDTO createChangePassword(UserDTO userDTO);
-
     void updateChangePassword(String str, UserDTO userDTO);
-
     void mailSend(MailDTO mailDTO);
 
 

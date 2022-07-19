@@ -21,14 +21,10 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
     @Autowired
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -90,9 +86,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutUrl("/logout")
                 .and()
                 .apply(new JwtSecurityConfig(jwtTokenProvider));
-
-//                .addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class)
-//                .addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     // 사용자 요청 정보로 UserPasswordAuthenticationToken 발급
@@ -114,5 +107,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public JwtAuthenticationFilter jwtFilter() {
         return new JwtAuthenticationFilter(jwtTokenProvider);
     }
-
 }

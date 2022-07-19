@@ -31,11 +31,6 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-
-//        response.setStatus(HttpStatus.OK.value());
-
-
-
         try( PrintWriter writer = response.getWriter()) {
 
             TokenDTO jwt = jwtTokenProvider.createToken(authentication);
@@ -52,9 +47,6 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
-
 }
 

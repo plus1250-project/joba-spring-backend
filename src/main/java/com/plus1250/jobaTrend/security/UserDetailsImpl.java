@@ -18,7 +18,6 @@ public class UserDetailsImpl implements UserDetails {
     private final String email;
     private final String name;
     private final Collection<? extends GrantedAuthority> authorities;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.authorities;
@@ -53,5 +52,4 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return false;
     }
-
 }

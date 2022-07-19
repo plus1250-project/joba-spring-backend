@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class CorpServiceImpl implements CorpService {
-    
     @Autowired
     private final IndusCorpRepository indusCorpRepository;
 
@@ -26,9 +25,7 @@ public class CorpServiceImpl implements CorpService {
     @Override
     public List<IndusCorpDTO> selectIndusCorp(IndusCorpDTO indusCorpDTO) {
         System.out.println("serviceImpl :" + indusCorpDTO);
-
         List<IndusCorp> indusCorps = indusCorpRepository.findByIndustryNameAndRegMonth(indusCorpDTO.getIndustryName(), indusCorpDTO.getRegMonth());
-
         List<IndusCorpDTO> result = indusCorps.stream().map(r -> new IndusCorpDTO(r)).collect(Collectors.toList());
         System.out.println(result);
 
@@ -38,9 +35,7 @@ public class CorpServiceImpl implements CorpService {
     @Override
     public List<GrowthCorpDTO> selectGrowthCorp(GrowthCorpDTO growthCorpDTO) {
         System.out.println("growthCorp service : " + growthCorpDTO);
-
         List<GrowthCorp> growthCorps = growthCorpRepository.findByIndustryNameAndRegMonth(growthCorpDTO.getIndustryName(), growthCorpDTO.getRegMonth());
-
         List<GrowthCorpDTO> result = growthCorps.stream().map(r -> new GrowthCorpDTO(r)).collect(Collectors.toList());
 
         return result;

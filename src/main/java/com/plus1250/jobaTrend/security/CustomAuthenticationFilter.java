@@ -23,7 +23,6 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 
         final LoginDTO loginDTO;
         try {
-            // 사용자 요청 정보로 UserPasswordAuthenticationToken 발급
             loginDTO = new ObjectMapper().readValue(request.getInputStream(), LoginDTO.class);
             System.out.println("loginDTO : " + loginDTO);
             authRequest = new UsernamePasswordAuthenticationToken(loginDTO.getEmail(), loginDTO.getPassword());
@@ -33,8 +32,6 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         }
         setDetails(request, authRequest);
 
-        // AuthenticationManager 전달 -> AuthenticationProvider 인증 메서드 실행
         return this.getAuthenticationManager().authenticate(authRequest);
     }
-
 }
