@@ -61,7 +61,7 @@ public class UserController {
 
     // 회원탈퇴
     @DeleteMapping
-    public void deleteUser(UserDTO userDTO) throws Exception {
+    public void deleteUser(@RequestBody UserDTO userDTO) throws Exception {
         System.out.println("delete controller");
         System.out.println(userDTO.getEmail() + " | " + userDTO.getPassword());
         userService.deleteUser(userDTO.getPassword(), userDTO.getEmail());
