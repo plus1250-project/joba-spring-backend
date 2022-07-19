@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class KeywordServiceImpl implements KeywordService {
+
     @Autowired
     private final IncreaseKeywordRepository increaseKeywordRepository;
 
@@ -80,6 +81,5 @@ public class KeywordServiceImpl implements KeywordService {
 
         return result;
     }
-
 
 }

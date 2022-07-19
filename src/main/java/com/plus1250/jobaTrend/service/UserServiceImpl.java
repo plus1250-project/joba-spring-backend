@@ -21,9 +21,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private final UserRepository userRepository;
 
-    @Autowired
-    private final JwtTokenProvider jwtTokenProvider;
-
     // 회원가입
     @Transactional
     @Override
@@ -108,7 +105,6 @@ public class UserServiceImpl implements UserService {
         System.out.println("delete serviceImpl");
         User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("가입되지 않은 이메일 입니다"));
 
-//        String.valueOf(passwordEncoder)
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new Exception("비밀번호가 맞지 않습니다.");
         }

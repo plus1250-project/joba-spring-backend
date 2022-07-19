@@ -28,17 +28,21 @@ public class CompareKeyword {
     @Column(name="change_rank")
     private int changeRank;
 
+    @Column(name="month_rank")
+    private int monthRank;
+
     public CompareKeyword() {}
 
     public CompareKeyword(String industryName) {
         this.industryName = industryName;
     }
 
-    public CompareKeyword(String industryName, String regMonth, String keyword, int increment, int changeRank) {
+    public CompareKeyword(String industryName, String regMonth, String keyword, int increment, int changeRank, int monthRank) {
         this.industryName = industryName;
         this.regMonth = regMonth;
         this.keyword = keyword;
         this.increment = increment;
         this.changeRank = changeRank;
+        this.monthRank = monthRank;
     }
 }

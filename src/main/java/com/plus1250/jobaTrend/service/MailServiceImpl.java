@@ -7,7 +7,6 @@ import com.plus1250.jobaTrend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,13 +26,13 @@ public class MailServiceImpl implements MailService {
     // 메일 내용 생성, 임시 비빌번호 변경
     @Override
     public MailDTO createChangePassword(UserDTO userDTO) {
-        System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
+        System.out.println(userDTO.getEmail());
 
         String str = getTempPassword();
         MailDTO mailDTO = new MailDTO();
         mailDTO.setAddress(userDTO.getEmail());
-        mailDTO.setTitle(userDTO.getNickName() +"님의 JOBA 임시 비밀번호 발급 안내 메일입니다");
-        mailDTO.setMessage(userDTO.getNickName() +"님의 임시 비밀번호는" + str + "입니다.");
+        mailDTO.setTitle("[JOBA Trend] 임시 비밀번호 발급 안내 메일입니다");
+        mailDTO.setMessage("회원님의 임시 비밀번호는" + str + "입니다.");
         updateChangePassword(str, new UserDTO(userDTO.getEmail()));
         return mailDTO;
     }
@@ -44,7 +43,7 @@ public class MailServiceImpl implements MailService {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
         String pw = encoder.encode(str);
-        //int userId = userRepository.findByUserId(email).getUserId();
+
         System.out.println("updatepw" + userDTO.getEmail());
 
         User userSave = userRepository.findByEmail(userDTO.getEmail())

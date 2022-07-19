@@ -10,7 +10,9 @@ public class CompareKeywordDTO {
     private String regMonth;
     private String keyword;
     private int increment;
-    private int fluctRank;
+    private int changeRank;
+    private int monthRank;
+
 
     public CompareKeywordDTO() {}
 
@@ -24,15 +26,17 @@ public class CompareKeywordDTO {
         this.regMonth = r.getRegMonth();
         this.keyword = r.getKeyword();
         this.increment = r.getIncrement();
-        this.fluctRank = r.getChangeRank();
+        this.changeRank = r.getChangeRank();
+        this.monthRank = r.getMonthRank();
     }
 
     @Builder
-    public CompareKeywordDTO(String industryName, String regMonth, String keyword, int increment, int changeRank) {
+    public CompareKeywordDTO(String industryName, String regMonth, String keyword, int increment, int changeRank, int monthRank) {
         this.industryName = industryName;
         this.regMonth = regMonth;
         this.keyword = keyword;
         this.increment = increment;
-        this.fluctRank = changeRank;
+        this.changeRank = changeRank;
+        this.monthRank = monthRank;
     }
 }

@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class CorpServiceImpl implements CorpService {
+
     @Autowired
     private final IndusCorpRepository indusCorpRepository;
 
@@ -40,4 +41,5 @@ public class CorpServiceImpl implements CorpService {
 
         return result;
     }
+
 }

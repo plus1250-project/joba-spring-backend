@@ -17,20 +17,23 @@ import java.util.Collections;
 @RequiredArgsConstructor
 @Service
 public class CustomUserDetailService implements UserDetailsService {
+
     @Autowired
     private final UserRepository userRepository;
 
-    private final AuthenticationFailureHandlerImpl authenticationFailureHandler;
-
     @Override
     public UserDetails loadUserByUsername(String email){
+
         if(email.isEmpty()) {
             System.out.println("이메일 없음");
         } else {
             System.out.println(email);
         }
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new BadCredentialsException("잘못된 이메일"));
+
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new BadCredentialsException("이메일이 잘못되었습니다."));
+
         System.out.println("사용자 확인 : " + user.getEmail() + " | " + user.getNickName());
+
         return new UserDetailsImpl(
                 user.getPassword(),
                 user.getEmail(),
@@ -38,4 +41,5 @@ public class CustomUserDetailService implements UserDetailsService {
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER"))
         );
     }
+
 }

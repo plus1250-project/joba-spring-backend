@@ -55,7 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http    .cors()
@@ -75,6 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().authorizeRequests()
                 .antMatchers(HttpMethod.POST).permitAll() // 해당 url 허용
                 .antMatchers(HttpMethod.GET).permitAll()
+                .antMatchers(HttpMethod.PATCH).permitAll()
+                .antMatchers(HttpMethod.DELETE).permitAll()
                 .antMatchers("**").hasAnyRole("ROLE_USER") // 권한 적용
                 .anyRequest().authenticated() // 나머지 요청에 대해서는 인증을 요구
                 .and()

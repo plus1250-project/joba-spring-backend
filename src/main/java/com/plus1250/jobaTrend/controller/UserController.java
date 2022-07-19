@@ -38,27 +38,10 @@ public class UserController {
         return userDTO;
     }
 
-//    // 로그아웃
-//    @GetMapping(value = "/logout")
-//    public String logoutUser(HttpServletRequest request, HttpServletResponse response) {
-//        new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
-//        return "redirect:/login";
-//    }
-
-    // 이메일과 닉네임 일치 여부 확인
-//    @GetMapping("/find-pw")
-//    public @ResponseBody Map<String, Boolean> findPassword(String email, String nickName) {
-//        Map<String,Boolean> json = new HashMap<>();
-//        boolean findCheck = userService.emailCheckNickname(email, nickName);
-//        System.out.println(findCheck);
-//        json.put("check", findCheck);
-//        return json;
-//    }
-
     // 로그인 전 비밀번호 찾기 - 메일 전송
     @PostMapping("/find-password")
     public @ResponseBody void sendEmail(@RequestBody UserDTO userDTO) {
-        System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
+        System.out.println(userDTO.getEmail());
         MailDTO mailDTO = mailService.createChangePassword(userDTO);
         mailService.mailSend(mailDTO);
     }

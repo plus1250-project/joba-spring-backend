@@ -16,6 +16,4 @@ public interface MailService {
     MailDTO createChangePassword(UserDTO userDTO);
     void updateChangePassword(String str, UserDTO userDTO);
     void mailSend(MailDTO mailDTO);
-
-
 }

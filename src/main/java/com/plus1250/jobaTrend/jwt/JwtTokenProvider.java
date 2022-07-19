@@ -99,14 +99,6 @@ public final class JwtTokenProvider {
         return token;
     }
 
-//    public String resolveRefreshToken(HttpServletRequest request) {
-//        String token = null;
-//        Cookie cookie = WebUtils.getCookie(request, "refresh-token");
-//        if (cookie != null)
-//            token = cookie.getValue();
-//        return token;
-//    }
-
     // 토큰 유효성, 만료일자 검증
     public boolean validateToken(String token) {
         try {
