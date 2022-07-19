@@ -42,10 +42,11 @@ public class UserServiceImpl implements UserService {
 
         User user = userRepository.findByEmail(userDTO.getEmail()).orElse(null);
 
+        // 중복이면 true
         if(userDTO.getEmail().equals(user.getEmail())) {
-            return "false";
-        } else {
             return "true";
+        } else {
+            return "false";
         }
 
     }
