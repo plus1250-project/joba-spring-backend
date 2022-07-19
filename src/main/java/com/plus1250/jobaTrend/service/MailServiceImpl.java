@@ -15,11 +15,9 @@ import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class MailServiceImpl implements MailService{
-
+public class MailServiceImpl implements MailService {
     @Autowired
     private final UserRepository userRepository;
-
     @Autowired
     private final JavaMailSender javaMailSender;
 
@@ -39,7 +37,6 @@ public class MailServiceImpl implements MailService{
         updateChangePassword(str, new UserDTO(userDTO.getEmail()));
         return mailDTO;
     }
-
 
     // 임시 비밀번호 발송 -> 비밀번호 변경
     @Override
@@ -63,8 +60,6 @@ public class MailServiceImpl implements MailService{
                 .build();
 
         userRepository.save(saveUser);
-
-        //userRepository.save(userId, pw);
     }
 
     // 10자리 랜덤난수 생성
@@ -82,7 +77,6 @@ public class MailServiceImpl implements MailService{
         }
         System.out.println(str);
         return str;
-
     }
 
     // STMP

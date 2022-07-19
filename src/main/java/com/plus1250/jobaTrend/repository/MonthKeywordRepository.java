@@ -7,9 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface MonthKeywordRepository extends JpaRepository<MonthKeyword, String> {
-
     List<MonthKeyword> findByKeywordAndIndustryNameAndInputDate(String keyword, String industryName, Date inputDate);
-//List<MonthKeyword> findByKeywordAndIndustryNameAndRegMonthBetween(String keyword, String industryName, String fromMonth, String regMonth);
-//    List<MonthKeyword> findByKeywordAndIndustryNameAndRegMonth(String keyword, String industryName, String regMonth);
 }
 

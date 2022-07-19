@@ -13,23 +13,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class ArticleServiceImpl implements ArticleService {
-
     @Autowired
     private final ArticleRepository articleRepository;
 
     @Override
     public List<ArticleDTO> selectArticle(ArticleDTO articleDTO) {
         System.out.println("serviceImpl : " + articleDTO.getIndustryName());
-
-        // DB
         List<Article> articles = articleRepository.findByIndustryNameAndIssueDate(articleDTO.getIndustryName(), articleDTO.getIssueDate());
-//        System.out.println(articles.get(0).getIssueDate());
-
-        // list entity
         List<ArticleDTO> result = articles.stream().map(r -> new ArticleDTO(r)).collect(Collectors.toList());
         System.out.println(result);
 
         return result;
     }
-
 }

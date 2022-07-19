@@ -24,7 +24,6 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public final class JwtTokenProvider {
-
     @Autowired
     private final UserDetailsService userDetailsService;
 
@@ -44,13 +43,11 @@ public final class JwtTokenProvider {
 
     // refresh token 2주
     private final long refreshTokenValidTime = 60 * 60 * 24 * 14 * 1000L;
-    ;
 
     @PostConstruct
     private void init() {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
-
 
     //토큰 Claims 정보 추출
     private Claims getClaims(String token) {
@@ -62,17 +59,13 @@ public final class JwtTokenProvider {
         return getClaims(token).getSubject();
     }
 
-
     // 토큰 인증 정보 추출
     public Authentication getAuthentication(String token) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(this.getSubject(token));
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 
-
-
     // Jwt 토큰 생성
-
     public TokenDTO createToken(Authentication authentication) {
         // 권한들 가져오기
         String authorities = authentication.getAuthorities().stream()
@@ -84,10 +77,10 @@ public final class JwtTokenProvider {
         // Access Token 생성
         Date accessTokenExpiresIn = new Date(now + accessTokenValidTime);
         String accessToken = Jwts.builder()
-                .setSubject(authentication.getName())       // payload "sub": "name"
-                .claim(AUTHORITIES_KEY, authorities)        // payload "auth": "ROLE_USER"
-                .setExpiration(accessTokenExpiresIn)        // payload "exp": 1516239022 (예시)
-                .signWith(SignatureAlgorithm.HS512, secretKey)    // header "alg": "HS512"
+                .setSubject(authentication.getName())
+                .claim(AUTHORITIES_KEY, authorities)
+                .setExpiration(accessTokenExpiresIn)
+                .signWith(SignatureAlgorithm.HS512, secretKey)
                 .compact();
 
         // Refresh Token 생성
@@ -104,45 +97,6 @@ public final class JwtTokenProvider {
                 .build();
     }
 
-//    public String createAccessToken(String userPk, String role) {
-//        Claims claims = Jwts.claims().setSubject(userPk);
-//        claims.put("role", role);
-//        Date now = new Date();
-//
-//        return Jwts.builder()
-//                .setClaims(claims)
-//                .setIssuedAt(now)
-//                .setExpiration(new Date(now.getTime() + accessTokenValidTime))
-//                .signWith(SignatureAlgorithm.HS256, secretKey)
-//                .compact();
-//    }
-//
-//    public String createRefreshToken(String userPk, String role) {
-//        Claims claims = Jwts.claims();
-//        claims.put("role", role);
-//        Date now = new Date();
-//        Date expiration = new Date(now.getTime() + refreshTokenValidTime);
-//
-//        return Jwts.builder()
-//                .setClaims(claims)
-//                .setIssuedAt(now)
-//                .setExpiration(expiration)
-//                .signWith(SignatureAlgorithm.HS256, secretKey)
-//                .compact();
-//    }
-//
-//    public String createToken(Authentication authentication) {
-//        Claims claims = Jwts.claims().setSubject(String.valueOf(authentication.getPrincipal()));
-//        claims.put("roles", authentication.getAuthorities());
-//        Date now = new Date();
-//        return Jwts.builder()
-//                .setClaims(claims)
-//                .setIssuedAt(now)
-//                .setExpiration(new Date(now.getTime() + accessTokenValidTime))
-//                .signWith(SignatureAlgorithm.HS256, secretKey)
-//                .compact();
-//    }
-
     public String resolveAccessToken(HttpServletRequest request) {
         String token = request.getHeader("access-token");
         return token;
@@ -155,11 +109,6 @@ public final class JwtTokenProvider {
             token = cookie.getValue();
         return token;
     }
-
-    // Request의 Header에서 token 파싱, "X-AUTH-TOKEN" : 토큰
-    //public String resolveToken(HttpServletRequest request) {
-    //   return request.getHeader("X-AUTH-TOKEN");
-    //}
 
     // 토큰 유효성, 만료일자 검증
     public boolean validateToken(String token) {
@@ -175,7 +124,6 @@ public final class JwtTokenProvider {
         if(refreshTokenService.isExpiredToken(jwtToken)) {
             return false;
         }
-
         return validateToken(jwtToken);
     }
 }

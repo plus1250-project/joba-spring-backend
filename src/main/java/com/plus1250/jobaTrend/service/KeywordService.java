@@ -4,9 +4,7 @@ import com.plus1250.jobaTrend.model.dto.*;
 
 import java.util.List;
 
-
 public interface KeywordService {
-
     // 상승 키워드
     String selectIncreaseKeyword(IncreaseKeywordDTO increaseKeywordDTO);
 
@@ -21,7 +19,5 @@ public interface KeywordService {
 
     // 월별 랭킹 키워드 전원 대비 분석 리스트
     List<CompareKeywordDTO> selectCompareKeyword(CompareKeywordDTO compareKeywordDTO);
-
-
 }
 

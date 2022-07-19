@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface CorpService {
     List<IndusCorpDTO> selectIndusCorp(IndusCorpDTO indusCorpDTO);
-
     List<GrowthCorpDTO> selectGrowthCorp(GrowthCorpDTO growthCorpDTO);
 }

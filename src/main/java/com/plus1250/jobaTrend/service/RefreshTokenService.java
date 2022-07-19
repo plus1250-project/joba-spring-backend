@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class RefreshTokenService {
-
     private final RefreshTokenRepository refreshTokenRepository;
     public boolean isExpiredToken(String token) {
         return refreshTokenRepository.existsByToken(token);

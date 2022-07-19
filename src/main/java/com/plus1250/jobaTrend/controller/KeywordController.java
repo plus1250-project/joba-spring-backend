@@ -54,6 +54,5 @@ public class KeywordController {
         System.out.println("selectCompareKeyword called!");
         return keywordService.selectCompareKeyword(new CompareKeywordDTO(industryName, regMonth));
     }
-
 }
 

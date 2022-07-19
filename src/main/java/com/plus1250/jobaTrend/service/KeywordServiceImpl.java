@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class KeywordServiceImpl implements KeywordService {
-
     @Autowired
     private final IncreaseKeywordRepository increaseKeywordRepository;
 
@@ -55,10 +54,7 @@ public class KeywordServiceImpl implements KeywordService {
     @Override
     public List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO) {
         String fromMonth = "2021-10";
-
         List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndInputDate(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getInputDate());
-//        List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonth(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getRegMonth());
-//                List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndRegMonthBetween(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), "2021-10", monthKeywordDTO.getRegMonth());
         System.out.println(monthKeywords);
         List<MonthKeywordDTO> result = monthKeywords.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
 
@@ -78,9 +74,7 @@ public class KeywordServiceImpl implements KeywordService {
     @Override
     public List<CompareKeywordDTO> selectCompareKeyword(CompareKeywordDTO compareKeywordDTO) {
         System.out.println("serviceImpl :" + compareKeywordDTO);
-
         List<CompareKeyword> compareKeywords = compareKeywordRepository.findByIndustryNameAndRegMonth(compareKeywordDTO.getIndustryName(), compareKeywordDTO.getRegMonth());
-
         List<CompareKeywordDTO> result = compareKeywords.stream().map(r-> new CompareKeywordDTO(r)).collect(Collectors.toList());
         System.out.println(result);
 
