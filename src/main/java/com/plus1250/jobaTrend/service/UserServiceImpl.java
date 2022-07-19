@@ -1,17 +1,11 @@
 package com.plus1250.jobaTrend.service;
 
 import com.plus1250.jobaTrend.jwt.JwtTokenProvider;
-import com.plus1250.jobaTrend.model.dto.RefreshRequest;
-import com.plus1250.jobaTrend.model.dto.TokenDTO;
-import com.plus1250.jobaTrend.model.entity.RefreshToken;
 import com.plus1250.jobaTrend.model.entity.User;
-import com.plus1250.jobaTrend.repository.RefreshTokenRepository;
 import com.plus1250.jobaTrend.repository.UserRepository;
 import com.plus1250.jobaTrend.model.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,9 +20,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private final UserRepository userRepository;
-
-    @Autowired
-    private final RefreshTokenRepository refreshTokenRepository;
 
     @Autowired
     private final JwtTokenProvider jwtTokenProvider;

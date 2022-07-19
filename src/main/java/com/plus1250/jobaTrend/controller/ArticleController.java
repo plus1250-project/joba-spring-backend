@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
-@RequestMapping("/")
 @RequiredArgsConstructor
 @RestController
 public class ArticleController {
@@ -17,10 +16,10 @@ public class ArticleController {
     @Autowired
     private final ArticleService articleService;
 
-    // 뉴스 기사 컨트롤러
+    // 뉴스 기사
     @GetMapping("/article")
     public List<ArticleDTO> selectArticle(@RequestParam(value = "industryName") String industryName, @RequestParam(value = "issueDate") String issueDate) {
-        System.out.println("controller : " + industryName + "|" + issueDate);
+        System.out.println("ArticleController : " + industryName + "|" + issueDate);
         return articleService.selectArticle(new ArticleDTO(industryName, issueDate));
     }
 }

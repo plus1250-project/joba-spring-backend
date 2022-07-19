@@ -31,10 +31,6 @@ public class Article {
 
     public Article() {}
 
-    public Article(String industryName) {
-        this.industryName = industryName;
-    }
-
     @Builder
     public Article(int articleId, String industryName, String articleUrl, String issueDate, String articleTitle, String press) {
         this.articleId = articleId;

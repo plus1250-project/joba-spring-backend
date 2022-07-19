@@ -1,6 +1,6 @@
 package com.plus1250.jobaTrend.jwt;
+
 import com.plus1250.jobaTrend.model.dto.TokenDTO;
-import com.plus1250.jobaTrend.service.RefreshTokenService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +26,6 @@ import java.util.stream.Collectors;
 public final class JwtTokenProvider {
     @Autowired
     private final UserDetailsService userDetailsService;
-
-    @Autowired
-    private final RefreshTokenService refreshTokenService;
 
     // secret key
     @Value("${jwt.secret-key}")
@@ -102,13 +99,13 @@ public final class JwtTokenProvider {
         return token;
     }
 
-    public String resolveRefreshToken(HttpServletRequest request) {
-        String token = null;
-        Cookie cookie = WebUtils.getCookie(request, "refresh-token");
-        if (cookie != null)
-            token = cookie.getValue();
-        return token;
-    }
+//    public String resolveRefreshToken(HttpServletRequest request) {
+//        String token = null;
+//        Cookie cookie = WebUtils.getCookie(request, "refresh-token");
+//        if (cookie != null)
+//            token = cookie.getValue();
+//        return token;
+//    }
 
     // 토큰 유효성, 만료일자 검증
     public boolean validateToken(String token) {
@@ -120,10 +117,4 @@ public final class JwtTokenProvider {
         }
     }
 
-    public boolean validateRefreshToken(String jwtToken) {
-        if(refreshTokenService.isExpiredToken(jwtToken)) {
-            return false;
-        }
-        return validateToken(jwtToken);
-    }
 }

@@ -12,20 +12,24 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/corp")
+@RequestMapping("/industry")
 public class CorpController {
+
     @Autowired
     private final CorpService corpService;
 
-    // 산업군 기업 리스트
-    @GetMapping("/indus-corp/{industryName}/{regMonth}")
+    // 산업군 우량 기업 리스트
+    @GetMapping("/corporation/{industryName}/{regMonth}")
     public List<IndusCorpDTO> selectIndusCorp(@PathVariable String industryName, @PathVariable String regMonth) {
-        System.out.println("indus-corp : " + industryName + " | " + regMonth);
+        System.out.println("Corporation controller : " + industryName + " | " + regMonth);
         return corpService.selectIndusCorp(new IndusCorpDTO(industryName, regMonth));
     }
-    @GetMapping("/growth-corp/{industryName}/{regMonth}")
+
+    // 산업군 성장 기업 리스트
+    @GetMapping("/corporation-growth/{industryName}/{regMonth}")
     public List<GrowthCorpDTO> selectGrowthCorp(@PathVariable String industryName, @PathVariable String regMonth) {
-        System.out.println("Growth-corp : " + industryName + " | " + regMonth);
+        System.out.println("Growth controller : " + industryName + " | " + regMonth);
         return corpService.selectGrowthCorp(new GrowthCorpDTO(industryName, regMonth));
     }
+
 }
