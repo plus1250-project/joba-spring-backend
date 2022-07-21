@@ -48,7 +48,7 @@ public class KeywordController {
     }
 
     // 월별 키워드 랭킹전월 대비 분석 리스트
-    @GetMapping("/monthly-ranking/compare/{industryName}/{regMonth}")
+    @GetMapping("/compare/{industryName}/{regMonth}")
     public List<CompareKeywordDTO> selectCompareKeyword(@PathVariable String industryName, @PathVariable String regMonth) {
         System.out.println("selectCompareKeyword : " + industryName + "|" + regMonth);
         return keywordService.selectCompareKeyword(new CompareKeywordDTO(industryName, regMonth));
