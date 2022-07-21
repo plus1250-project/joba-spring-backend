@@ -6,7 +6,7 @@ public interface UserService {
 
     boolean emailCheckNickname(String email, String nickName);
 
-    UserDTO getInfo(String email);
+    UserDTO getInfo(UserDTO userDTO);
 
     void insertUser(UserDTO userDTO);
 

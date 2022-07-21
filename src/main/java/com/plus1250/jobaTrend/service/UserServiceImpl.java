@@ -54,8 +54,8 @@ public class UserServiceImpl implements UserService {
     // 회원 정보 조회
     @Transactional(readOnly = true)
     @Override
-    public UserDTO getInfo(String email) {
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("회원 정보가 존재하지 않습니다."));
+    public UserDTO getInfo(UserDTO userDTO) {
+        User user = userRepository.findByEmail(userDTO.getEmail()).orElseThrow(() -> new RuntimeException("회원 정보가 존재하지 않습니다."));
         return UserDTO.builder()
                 .userId(user.getUserId())
                 .email(user.getEmail())

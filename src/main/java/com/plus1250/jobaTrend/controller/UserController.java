@@ -39,10 +39,10 @@ public class UserController {
     }
 
     // 회원 정보 조회
-    @GetMapping
-    public UserDTO info(@RequestParam String email) {
-        UserDTO userDTO = userService.getInfo(email);
-        return userDTO;
+    @PostMapping(value = "/info")
+    public UserDTO info(@RequestBody UserDTO userDTO) {
+
+        return userService.getInfo(new UserDTO(userDTO.getEmail()));
     }
 
     // 로그인 전 비밀번호 찾기 - 메일 전송
