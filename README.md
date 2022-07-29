@@ -100,10 +100,8 @@
 
 
 ## :scroll: WIKI 
-<a href="https://github.com/plus1250-project/joba/wiki/1.-%EA%B0%9C%EC%9A%94">
-    <img src="https://img.shields.io/badge/-JOBA%20WIKI-CDDEFF?style=for-the-badge&labelColor=EEF2FF"
-/>
-</a>  
+<a href="https://github.com/plus1250-project/joba/wiki">
+    <img src="https://img.shields.io/badge/-JOBA%20WIKI-CDDEFF?style=for-the-badge&labelColor=EEF2FF"/></a>  
 
 
 - 프로젝트 개요
