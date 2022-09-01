@@ -2,7 +2,7 @@ HELP.md
 .gradle
 .gradletasknamecache
 build/
-!gradle/wrapper/gradle-wrapper.jar
+#!gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
 
@@ -10,7 +10,7 @@ build/
 *.class
 
 ### Package Files ###
-*.jar
+#*.jar
 *.war
 *.ear
 
