@@ -3,16 +3,24 @@
 ## :radio: 프로젝트 주제
 뉴스 기사 데이터를 활용한 산업 트렌드 분석 및 시각화 서비스
 
+</br>
+
 ## :floppy_disk: 프로젝트 배경 
 2030의 가장 큰 관심사인 취업은 목표하는 산업의 트렌드 및 기업 정보를 습득하는 것이 중요하다. 빅데이터를 통해 산업군의 실시간 트렌드와 산업군별 기업들의 성장 정보들을 모아 제공하여 취업을 희망하는 사람들에게 도움이 될 수 있는 플랫폼을 기획하였다. 따라서 실시간으로 변화하는 데이터에 적합한 플랫폼을 제작하기 위해서 데이터 파이프라인 구축 및 자동화와 웹 개발이 필요하다고 판단하였다.
+
+</br>
 
 ## :minidisc: 프로젝트 목적
 1. 빅데이터 축적을 위한 데이터 파이프라인 구축 및 자동화 솔루션 구축
 2. 실제 현업에서 적용할 만한 수준의 웹 어플리케이션 개발 기술 습득
 3. 애자일 방식의 프로젝트 관리 및 실행 경험
 
+</br>
+
 ## :hourglass: 프로젝트 기간
 `2022년 5월 23일 ~ 2022년 7월 24일`
+
+</br>
 
 ## :high_brightness: 팀 소개
 
@@ -24,7 +32,55 @@
 :ocean: 김종원 :  백엔드 , 프론트엔드 ,docker 구축  
 :hamster: 오다솔 :  백엔드, docker 구축  
 
- 
+</br>
+
+## :wrench: 기술 스택
+### 인프라 구축
+<img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/RedHat-EE0000?style=for-the-badge&logo=redhat&logoColor=white"> <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> <img src="https://img.shields.io/badge/Apache%20Tomcat-F8DC75?style=for-the-badge&logo=Apache%20Tomcat&logoColor=white">
+
+### 데이터 파이프라인
+<img src="https://img.shields.io/badge/Apache%20Hadoop-66CCFF?style=for-the-badge&logo=Apache%20Hadoop&logoColor=white"> <img src="https://img.shields.io/badge/Apache%20Spark-E25A1C?style=for-the-badge&logo=Apache%20Spark&logoColor=white"> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=PyTorch&logoColor=white"> <img src="https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=apache%20Airflow&logoColor=white">
+
+### 백엔드
+<img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white"> <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot">
+
+### 프론트엔드
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=61DAFB">
+
+</br>
+
+## 📅 WBS
+https://github.com/plus1250-project/joba/wiki/2.-WBS
+
+</br>
+
+
+## ⚙️ 시스템 아키텍쳐
+![시스템아키텍쳐](https://user-images.githubusercontent.com/90269036/197961867-70426454-579a-4244-9687-02c797b40f55.png)
+
+</br>
+
+
+## 🖇 클래스 다이어그램
+![클래스다이어그램](https://user-images.githubusercontent.com/90269036/197962704-1eecf305-169e-4fac-968d-af50a71dbec1.jpg)
+
+</br>
+
+## 🛢 DB 설계
+![DB (1)](https://user-images.githubusercontent.com/90269036/197963583-3ff536cf-4731-486a-9470-9071f7fadc1c.png)
+
+</br>
+
+## 🧾 API
+![api](https://user-images.githubusercontent.com/90269036/197967147-d4309d3f-f560-4b0a-9ee4-869b13e340bc.png)
+
+
+
+</br>
+
+</br>
+
+
 ## :movie_camera: 기능 소개
 
 [![유튜브화면](https://user-images.githubusercontent.com/97429679/180661184-3a780e84-5641-4118-807c-9fd5d023d267.PNG)](https://youtu.be/6BCoMDTAVqs)
@@ -45,20 +101,9 @@
 <img src = "https://user-images.githubusercontent.com/97663140/180639353-a4ce9d09-e268-413d-b039-9ea6b100a8be.png" width="49.6%" height="50%">
 </p>
 
+</br>
 
 
-## :wrench: 기술 스택
-### 인프라 구축
-<img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white"> <img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white"> <img src="https://img.shields.io/badge/RedHat-EE0000?style=for-the-badge&logo=redhat&logoColor=white"> <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"> <img src="https://img.shields.io/badge/Apache%20Tomcat-F8DC75?style=for-the-badge&logo=Apache%20Tomcat&logoColor=white">
-
-### 데이터 파이프라인
-<img src="https://img.shields.io/badge/Apache%20Hadoop-66CCFF?style=for-the-badge&logo=Apache%20Hadoop&logoColor=white"> <img src="https://img.shields.io/badge/Apache%20Spark-E25A1C?style=for-the-badge&logo=Apache%20Spark&logoColor=white"> <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=PyTorch&logoColor=white"> <img src="https://img.shields.io/badge/Apache%20Airflow-017CEE?style=for-the-badge&logo=apache%20Airflow&logoColor=white">
-
-### 백엔드
-<img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white"> <img src="https://img.shields.io/badge/Spring_Boot-F2F4F9?style=for-the-badge&logo=spring-boot">
-
-### 프론트엔드
-<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=61DAFB">
 
 ## :bomb: 이슈
 
@@ -89,6 +134,8 @@
 - 독립된 컨테이너로 구축하면 컨테이너 간의 통신이 되지 않는 문제 발생.
 - 브릿지 네트워크를 동일한 네트워크로 구성하여 해결.
 
+</br>
+
 ## :thought_balloon: 개선 사항 
 1. 모델서버와 HDFS를 연결하여 전체 데이터 흐름을 Airflow로 자동화
 2. 로그인 Redis 활용 토큰 관리
@@ -98,17 +145,9 @@
 
 <i class="devicon-pytorch-plain-wordmark"></i>
 
+</br>
 
 ## :scroll: WIKI 
 <a href="https://github.com/plus1250-project/joba/wiki">
     <img src="https://img.shields.io/badge/-JOBA%20WIKI-CDDEFF?style=for-the-badge&labelColor=EEF2FF"/></a>  
-
-
-- 프로젝트 개요
-- WBS
-- DB 설계 
-- 화면 설계
-- Class Diagram
-- API 명세서
-- 시스템 아키텍처
 
