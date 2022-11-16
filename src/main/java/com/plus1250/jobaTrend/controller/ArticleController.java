@@ -19,7 +19,6 @@ public class ArticleController {
     // 뉴스 기사
     @GetMapping("/article")
     public List<ArticleDTO> selectArticle(@RequestParam(value = "industryName") String industryName, @RequestParam(value = "issueDate") String issueDate) {
-        System.out.println("ArticleController : " + industryName + "|" + issueDate);
         return articleService.selectArticle(new ArticleDTO(industryName, issueDate));
     }
 }

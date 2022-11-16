@@ -1,9 +1,7 @@
 package com.plus1250.jobaTrend.service;
 
 import com.plus1250.jobaTrend.model.dto.*;
-
 import com.plus1250.jobaTrend.model.entity.*;
-
 import com.plus1250.jobaTrend.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +41,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 트렌드 키워드 리스트
     @Override
     public List<TrendKeywordDTO> selectTrendKeyword(TrendKeywordDTO trendKeywordDTO) {
-        System.out.println(trendKeywordDTO.getFromDate());
         List<TrendKeyword> trendKeywords = trendKeywordRepository.findByIndustryNameAndFromDate(trendKeywordDTO.getIndustryName(), trendKeywordDTO.getFromDate());
-        System.out.println(trendKeywords.size());
         List<TrendKeywordDTO> result = trendKeywords.stream().map(r-> new TrendKeywordDTO(r)).collect(Collectors.toList());
 
         return result;
@@ -54,9 +50,7 @@ public class KeywordServiceImpl implements KeywordService {
     // 월별 키워드 리스트
     @Override
     public List<MonthKeywordDTO> selectMonthKeyword(MonthKeywordDTO monthKeywordDTO) {
-        String fromMonth = "2021-10";
         List<MonthKeyword> monthKeywords = monthKeywordRepository.findByKeywordAndIndustryNameAndInputDate(monthKeywordDTO.getKeyword(), monthKeywordDTO.getIndustryName(), monthKeywordDTO.getInputDate());
-        System.out.println(monthKeywords);
         List<MonthKeywordDTO> result = monthKeywords.stream().map(r -> new MonthKeywordDTO(r)).collect(Collectors.toList());
 
         return result;
@@ -74,10 +68,8 @@ public class KeywordServiceImpl implements KeywordService {
     // 월별 랭킹 키워드 전월 대비 분석 리스트
     @Override
     public List<CompareKeywordDTO> selectCompareKeyword(CompareKeywordDTO compareKeywordDTO) {
-        System.out.println("serviceImpl :" + compareKeywordDTO);
         List<CompareKeyword> compareKeywords = compareKeywordRepository.findByIndustryNameAndRegMonth(compareKeywordDTO.getIndustryName(), compareKeywordDTO.getRegMonth());
         List<CompareKeywordDTO> result = compareKeywords.stream().map(r-> new CompareKeywordDTO(r)).collect(Collectors.toList());
-        System.out.println(result);
 
         return result;
     }

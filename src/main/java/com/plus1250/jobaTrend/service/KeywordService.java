@@ -20,4 +20,3 @@ public interface KeywordService {
     // 월별 랭킹 키워드 전원 대비 분석 리스트
     List<CompareKeywordDTO> selectCompareKeyword(CompareKeywordDTO compareKeywordDTO);
 }
-

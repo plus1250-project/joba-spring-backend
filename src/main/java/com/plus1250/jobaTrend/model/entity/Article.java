@@ -41,4 +41,3 @@ public class Article {
         this.press = press;
     }
 }
-

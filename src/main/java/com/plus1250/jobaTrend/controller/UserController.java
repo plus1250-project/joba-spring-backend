@@ -18,6 +18,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RequestMapping("/member")
 public class UserController {
+
     @Autowired
     private final UserService userService;
 
@@ -34,21 +35,18 @@ public class UserController {
     // 이메일 중복 확인
     @PostMapping(value = "/validate")
     public String validateEmail(@RequestBody UserDTO userDTO) {
-
         return userService.validateEmail(userDTO);
     }
 
     // 회원 정보 조회
     @PostMapping(value = "/info")
     public UserDTO info(@RequestBody UserDTO userDTO) {
-
         return userService.getInfo(new UserDTO(userDTO.getEmail()));
     }
 
     // 로그인 전 비밀번호 찾기 - 메일 전송
     @PostMapping("/find-password")
     public @ResponseBody void sendEmail(@RequestBody UserDTO userDTO) {
-        System.out.println(userDTO.getEmail());
         MailDTO mailDTO = mailService.createChangePassword(userDTO);
         mailService.mailSend(mailDTO);
     }
@@ -56,7 +54,6 @@ public class UserController {
     // 닉네임 변경
     @PatchMapping("/nickname")
     public void updateUserNickname(@RequestBody UserDTO userDTO) throws Exception {
-        System.out.println(userDTO.getEmail() + " | " + userDTO.getNickName());
         userService.updateUserNickname(userDTO);
     }
 
@@ -69,8 +66,7 @@ public class UserController {
     // 회원탈퇴
     @DeleteMapping
     public void deleteUser(@RequestBody UserDTO userDTO) throws Exception {
-        System.out.println("delete controller");
-        System.out.println(userDTO.getEmail() + " | " + userDTO.getPassword());
         userService.deleteUser(userDTO.getPassword(), userDTO.getEmail());
     }
+
 }

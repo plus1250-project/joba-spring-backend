@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -20,15 +19,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<ArticleDTO> selectArticle(ArticleDTO articleDTO) {
-
-        System.out.println("serviceImpl (article) : " + articleDTO.getIndustryName());
-
         List<Article> articles = articleRepository.findByIndustryNameAndIssueDate(articleDTO.getIndustryName(), articleDTO.getIssueDate());
-
-
         List<ArticleDTO> result = articles.stream().map(r -> new ArticleDTO(r)).collect(Collectors.toList());
-
-        System.out.println(result);
 
         return result;
     }

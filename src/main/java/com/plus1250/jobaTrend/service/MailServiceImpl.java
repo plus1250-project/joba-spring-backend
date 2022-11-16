@@ -91,4 +91,3 @@ public class MailServiceImpl implements MailService {
         javaMailSender.send(simpleMailMessage);
     }
 }
-
