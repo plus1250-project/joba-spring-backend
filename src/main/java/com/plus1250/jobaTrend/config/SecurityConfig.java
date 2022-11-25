@@ -25,23 +25,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+
     private final JwtTokenProvider jwtTokenProvider;
 
     // 인증 실패,  인증 헤더 전달 실패
-    @Autowired
     private final AuthenticationEntryPoint authenticationEntryPoint;
 
     // 권한 실패
-    @Autowired
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
 
     // 인증 성공 핸들러
-    @Autowired
     private final AuthenticationSuccessHandlerImpl authenticationSuccessHandlerImpl;
 
     // 인증 실패 핸들러
-    @Autowired
     private final AuthenticationFailureHandlerImpl authenticationFailureHandlerImpl;
 
     @Bean

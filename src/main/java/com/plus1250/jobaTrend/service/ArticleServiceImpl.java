@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
-    @Autowired
     private final ArticleRepository articleRepository;
+
 
     @Override
     public List<ArticleDTO> selectArticle(ArticleDTO articleDTO) {

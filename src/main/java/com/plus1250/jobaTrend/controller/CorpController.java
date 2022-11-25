@@ -15,7 +15,6 @@ import java.util.List;
 @RequestMapping("/industry")
 public class CorpController {
 
-    @Autowired
     private final CorpService corpService;
 
     // 산업군 우량 기업 리스트

@@ -17,12 +17,10 @@ import java.util.stream.Collectors;
 @Service
 public class CorpServiceImpl implements CorpService {
 
-    @Autowired
     private final IndusCorpRepository indusCorpRepository;
-
-    @Autowired
     private final GrowthCorpRepository growthCorpRepository;
-    
+
+
     @Override
     public List<IndusCorpDTO> selectIndusCorp(IndusCorpDTO indusCorpDTO) {
         List<IndusCorp> indusCorps = indusCorpRepository.findByIndustryNameAndRegMonth(indusCorpDTO.getIndustryName(), indusCorpDTO.getRegMonth());

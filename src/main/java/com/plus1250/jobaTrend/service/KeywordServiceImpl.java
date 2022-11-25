@@ -14,20 +14,12 @@ import java.util.stream.Collectors;
 @Service
 public class KeywordServiceImpl implements KeywordService {
 
-    @Autowired
     private final IncreaseKeywordRepository increaseKeywordRepository;
-
-    @Autowired
     private final TrendKeywordRepository trendKeywordRepository;
-
-    @Autowired
     private final MonthKeywordRepository monthKeywordRepository;
-
-    @Autowired
     private final MonthRankKeywordRepository monthRankKeywordRepository;
-
-    @Autowired
     private final CompareKeywordRepository compareKeywordRepository;
+
 
     // 상승 키워드
     @Override
