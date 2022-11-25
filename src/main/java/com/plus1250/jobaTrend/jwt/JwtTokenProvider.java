@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public final class JwtTokenProvider {
-    @Autowired
+
     private final UserDetailsService userDetailsService;
 
     // secret key

@@ -19,10 +19,7 @@ import java.util.Map;
 @RequestMapping("/member")
 public class UserController {
 
-    @Autowired
     private final UserService userService;
-
-    @Autowired
     private final MailService mailService;
 
     // 회원가입

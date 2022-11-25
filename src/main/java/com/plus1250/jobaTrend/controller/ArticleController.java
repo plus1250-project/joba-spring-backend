@@ -13,7 +13,6 @@ import java.util.List;
 @RestController
 public class ArticleController {
 
-    @Autowired
     private final ArticleService articleService;
 
     // 뉴스 기사

@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/keyword")
 public class KeywordController {
 
-    @Autowired
     private final KeywordService keywordService;
 
     // 상승 키워드

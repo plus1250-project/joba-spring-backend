@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class MailServiceImpl implements MailService {
-    @Autowired
+
     private final UserRepository userRepository;
-    @Autowired
     private final JavaMailSender javaMailSender;
 
     @Value("${spring.mail.username}")
     private String FROM_ADDRESS;
+
 
     // 메일 내용 생성, 임시 비빌번호 변경
     @Override

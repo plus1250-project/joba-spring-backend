@@ -15,11 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    @Autowired
-    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
+    private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+
 
     // 회원가입
     @Transactional
