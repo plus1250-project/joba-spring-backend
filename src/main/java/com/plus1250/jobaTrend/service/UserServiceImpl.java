@@ -1,11 +1,9 @@
 package com.plus1250.jobaTrend.service;
 
-import com.plus1250.jobaTrend.jwt.JwtTokenProvider;
+import com.plus1250.jobaTrend.model.dto.UserDTO;
 import com.plus1250.jobaTrend.model.entity.User;
 import com.plus1250.jobaTrend.repository.UserRepository;
-import com.plus1250.jobaTrend.model.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
